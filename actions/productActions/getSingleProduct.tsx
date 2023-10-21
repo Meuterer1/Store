@@ -7,9 +7,9 @@ const getSingleProductAction = (id: number, products: Product[]) => {
   return { type: GET_SINGLE_PRODUCT, payload: thisOneProduct } as ProductAction;
 };
 
-const fetchSingleProduct = (id: number, products: Product[]): ProductAction => {
+const getSingleProduct = (id: number, products: Product[]): ProductAction => {
   const action = getSingleProductAction(id, products);
   return action;
 };
 
-export default fetchSingleProduct;
+export default getSingleProduct;

@@ -1,0 +1,150 @@
+.cart {
+  justify-content: space-around;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  h4 {
+    font-weight: 100;
+    padding-bottom: 10px;
+    position: relative;
+    &::after {
+      content: '';
+      width: 100%;
+      height: 0.5px;
+      background-color: rgb(194, 194, 194);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+.promos {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-top: 30px;
+  button {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: justify;
+    span {
+      margin-right: 8px;
+    }
+  }
+  input {
+    width: 30%;
+    margin-right: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea {
+    padding: 5px;
+    font-size: 16px;
+    width: 45%;
+    font-family: 'Rajdhani', sans-serif;
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  .promoCodeDetails {
+    button {
+      text-transform: uppercase;
+      font-size: 17px;
+      padding: 5px;
+      &:hover {
+        color: rgb(97, 97, 97);
+      }
+    }
+  }
+}
+
+.order {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 60%;
+}
+
+.summary {
+  margin: 20px 0;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+
+  .summary_details {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    &:nth-last-child(3) {
+      ::after {
+        content: '';
+        width: 100%;
+        height: 0.5px;
+        background-color: rgb(194, 194, 194);
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    #delivery_cost {
+      text-decoration: line-through;
+    }
+  }
+
+  .promo_code {
+    p {
+      &:nth-child(1) {
+        flex-grow: 0.75;
+      }
+    }
+  }
+
+  button {
+    padding: 5px;
+    width: 100%;
+    border: 0.5px solid black;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    transition: 1s;
+    &:hover {
+      background-color: rgb(97, 95, 95);
+      cursor: pointer;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  .cart {
+    flex-direction: column;
+  }
+  .order {
+    width: 100%;
+  }
+  .summary {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .card_sliding_single_item {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .card_sliding_item_details {
+    padding: 10px 0;
+  }
+}

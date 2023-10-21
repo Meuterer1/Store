@@ -1,0 +1,167 @@
+.customer_care {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 18px;
+  background-color: rgb(240, 240, 240);
+  text-align: center;
+  width: 100%;
+  height: 400px;
+  h3 {
+    font-size: 30px;
+  }
+}
+
+.customer_care_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 40%;
+  width: 80%;
+  flex-wrap: wrap;
+  form {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    input {
+      margin-right: 15px;
+      width: 25%;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      padding: 5px;
+      &:focus {
+        outline: none;
+      }
+    }
+    textarea {
+      padding: 5px;
+      font-size: 16px;
+      width: 45%;
+      font-family: 'Rajdhani', sans-serif;
+      resize: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    button {
+      padding: 5px;
+      width: calc(45% + 10px);
+      border: 0.5px solid black;
+      background-color: black;
+      color: white;
+      font-size: 18px;
+      text-transform: uppercase;
+      &:hover {
+        background-color: rgb(97, 95, 95);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.terms {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: auto;
+  text-align: center;
+  text-align: justify;
+  width: 100%;
+  h2 {
+    text-align: center;
+    font-size: 40px;
+  }
+  .terms_questions {
+    width: calc(50% - 40px);
+    margin-bottom: 20px;
+    padding: 15px;
+    ul {
+      padding: 0;
+      list-style: none;
+      line-height: 25px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .customer_care {
+    height: 600px;
+  }
+  .customer_care_form {
+    height: 80%;
+    form {
+      flex-direction: row;
+      input {
+        margin: 10px 0;
+        width: 55%;
+        padding: 10px;
+      }
+      textarea {
+        width: calc(60% - 10px);
+      }
+      button {
+        margin-top: 15px;
+        width: calc(60%);
+      }
+    }
+  }
+  .terms {
+    text-align: center;
+    justify-content: center;
+    .terms_questions {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .customer_care_form {
+    form {
+      input {
+        width: 70%;
+      }
+      textarea {
+        width: calc(75% - 10px);
+      }
+      button {
+        margin-top: 15px;
+        width: 75%;
+      }
+    }
+  }
+}
+
+@media (max-width: 405px) {
+  .customer_care {
+    height: 650px;
+  }
+  .customer_care_form {
+    form {
+      textarea {
+        width: calc(75%);
+      }
+    }
+  }
+}
+
+@media (max-width: 210px) {
+  .customer_care {
+    height: 700px;
+    form {
+      input {
+        width: 70%;
+      }
+      textarea {
+        width: 75%;
+      }
+      button {
+        width: 75%;
+      }
+    }
+  }
+}

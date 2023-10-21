@@ -1,0 +1,331 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.main_page_offer {
+  height: 570px;
+}
+
+.first {
+  background-color: rgba(76, 151, 157, 0.3);
+}
+
+.second {
+  background-color: rgb(147, 123, 99, 0.3);
+}
+
+div.first,
+div.second {
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.photo_left,
+.tail_right,
+.photo_right,
+.tail_left {
+  display: flex;
+  height: 100%;
+  width: 450px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.tail_left,
+.tail_right {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  h3 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 2em;
+  }
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s linear;
+  }
+  a:hover {
+    color: rgb(190, 190, 190);
+  }
+  p {
+    position: relative;
+    font-size: 16px;
+  }
+  p::after {
+    content: '';
+    width: 80%;
+    position: absolute;
+    height: 2px;
+    background-color: black;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.photo_left {
+  background-image: url('../../public/assets/fashion-woman-girl-model-white-suit-sunglasses-street\ \(1\).jpg');
+}
+
+.tail_right {
+  background-color: rgb(76, 151, 157);
+  a {
+    color: black;
+  }
+}
+
+.photo_right {
+  background-image: url('../../public/assets//man-blue-suit-stands-street-sydney\ \(1\).jpg');
+}
+
+.tail_left {
+  background-color: rgb(147, 123, 99);
+  color: white;
+  a {
+    color: white;
+  }
+  p::after {
+    background-color: white;
+  }
+}
+
+.new-arrivals {
+  justify-content: space-evenly;
+  width: 80%;
+  height: 170vh;
+  margin: 50px auto;
+  text-align: center;
+  z-index: 1;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  width: calc(30% - 15px);
+  height: 80vh;
+  margin-left: 15px;
+  margin-top: 50px;
+  overflow: hidden;
+  position: relative;
+  -webkit-box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
+  -moz-box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
+  box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
+  z-index: 1;
+  img {
+    max-height: 100%;
+  }
+  button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(66, 66, 70, 0.8);
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: 1s;
+    cursor: pointer;
+    &:hover {
+      background-color: black;
+    }
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  width: 100%;
+  margin-top: 50px;
+  font-size: 60px;
+}
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+  text-align: center;
+  width: 100%;
+  p {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  input,
+  button {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  input {
+    background-color: transparent;
+    border: 0.5px solid black;
+    height: 1.5em;
+    padding: 10px 5px;
+    width: calc(40% - 15px);
+    :hover,
+    :focus,
+    :active {
+      border: none;
+    }
+  }
+  button.subscribe_button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 15px 0;
+    width: 40%;
+    text-transform: uppercase;
+    transition: 1s;
+    &:hover {
+      background-color: rgb(75, 75, 75);
+      cursor: pointer;
+    }
+  }
+}
+
+.sale {
+  align-content: center;
+  background-color: rgb(26, 25, 25);
+  display: flex;
+  justify-content: space-evenly;
+  height: 80vh;
+  padding-top: 20px;
+  width: 100%;
+  div {
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70%;
+    width: 40%;
+  }
+  p,
+  h3 {
+    color: white;
+    margin-top: 0;
+    padding: 0;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-weight: 800;
+    font-size: 2rem;
+  }
+}
+
+.accessories {
+  background-image: url('../../public/assets/woman-accessories-black-side-view.jpg');
+}
+
+.winter_sale {
+  background-image: url('../../public/assets/attractive-lady-velvet-dress-sunglasses-poses-outside.jpg');
+}
+
+@media (max-width: 1000px) {
+  .photo_left,
+  .tail_right,
+  .photo_right,
+  .tail_left {
+    width: 35vw;
+  }
+  .new-arrivals {
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .photo_left,
+  .tail_right,
+  .photo_right,
+  .tail_left {
+    width: 70vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .photo_left,
+  .tail_right,
+  .photo_right,
+  .tail_left {
+    width: 100%;
+  }
+
+  div.first,
+  div.second {
+    flex-wrap: wrap;
+  }
+
+  .main_page_offer {
+    height: 1200px;
+  }
+
+  .photo_left,
+  .tail_right,
+  .photo_right,
+  .tail_left {
+    width: 100%;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+
+  .second .tail_left {
+    order: 2;
+  }
+
+  .sale {
+    height: 80vh;
+    padding-top: 0px;
+    width: 100%;
+    div {
+      height: 50%;
+      width: 100%;
+    }
+  }
+
+  .new-arrivals {
+    height: auto;
+  }
+
+  .item {
+    height: 500px;
+    width: 80%;
+  }
+
+  .subscribe {
+    input {
+      width: calc(60% - 15px);
+    }
+    button.subscribe_button {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 300px) {
+  .container {
+    h2 {
+      font-size: 30px;
+    }
+  }
+  .subscribe {
+    input {
+      width: calc(80% - 15px);
+    }
+    button.subscribe_button {
+      width: 80%;
+    }
+  }
+}

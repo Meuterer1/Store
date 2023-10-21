@@ -1,0 +1,100 @@
+.user_orders {
+  width: 70%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin: 10px auto;
+}
+.user_single_order {
+  border: 1px solid black;
+  margin-top: 15px;
+}
+.user_orders_history {
+  width: 55%;
+}
+
+.user_account {
+  width: 35%;
+}
+
+.user_single_order_summary {
+  button {
+    border: none;
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 10px;
+    cursor: pointer;
+  }
+}
+.user_single_order_summary_details {
+  margin: 0 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.user_single_order_summary_details_item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.user_account_details {
+  border: 1px solid black;
+  padding: 10px;
+}
+.user_account_details_item {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 0.5px;
+    background-color: rgb(184, 180, 180);
+    width: 100%;
+  }
+  h4,
+  p {
+    margin: 16px 0;
+  }
+}
+.user_account_details_item_adress {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  text-align: end;
+}
+
+@media (max-width: 1000px) {
+  .user_orders {
+    width: 90%;
+  }
+}
+
+@media (max-width: 800px) {
+  .user_orders {
+    width: 95%;
+  }
+}
+
+@media (max-width: 725px) {
+  .user_orders_history,
+  .user_account {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .user_orders {
+    flex-wrap: wrap;
+  }
+  .user_account {
+    order: -1;
+  }
+}
+
+@media (max-width: 240px) {
+  .user_account_details_item {
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,220 @@
+$single_product_font_family: 'Rajdhani', sans-serif;
+$single_product_font_size: 18px;
+
+.single-product-page {
+  align-items: center;
+  display: flex;
+  font-family: $single_product_font_family;
+  font-size: $single_product_font_size;
+  max-width: 70vw;
+  margin: 0 auto;
+  text-align: center;
+  width: min(80%, 1200px);
+}
+
+.single-product-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  padding: 10px;
+  text-transform: uppercase;
+  .single-product-image {
+    max-height: 50vh;
+    max-width: 50vh;
+    padding-top: 30px;
+  }
+  .single_product_details {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    text-align: justify;
+    width: 40%;
+    h1 {
+      margin: 0;
+    }
+    .single_product_description {
+      text-transform: none;
+    }
+    #single_product_quantity {
+      border: 0.5px solid black;
+      border-radius: 0;
+      max-width: 50px;
+    }
+    .single_product_quantity {
+      input {
+        text-align: center;
+        padding: 5px;
+        font-size: 16px;
+      }
+      input:focus {
+        outline: none;
+      }
+    }
+
+    .single_product_buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 0;
+      width: 100%;
+      button {
+        border: none;
+        font-size: $single_product_font_size;
+        margin: 5px 0;
+        padding: 10px 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      #button_buy_now {
+        background-color: black;
+        border: 0.5px solid black;
+        color: #ffffff;
+        width: 100%;
+        &:hover {
+          background-color: white;
+          a {
+            color: black;
+          }
+        }
+      }
+      #button_favourites {
+        border: 0.5px solid #8fd6ca;
+        background-color: #ffffff;
+        padding: 10px 10px;
+        width: 15%;
+        &:hover #heart_icon {
+          color: white;
+        }
+        &:hover {
+          background-color: #8fd6ca;
+        }
+        #heart_icon {
+          color: #8fd6ca;
+        }
+      }
+      #button_add_to_card {
+        background-color: #8fd6ca;
+        border: 0.5px solid #8fd6ca;
+        color: #ffffff;
+        width: 75%;
+        &:hover {
+          background-color: white;
+          color: #8fd6ca;
+        }
+      }
+      a {
+        text-decoration: none;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .single-product-container {
+    .single-product-image {
+      max-width: 40vh;
+      max-height: 40vh;
+    }
+  }
+}
+
+@media (max-width: 1145px) {
+  .single-product-container
+    .single_product_details
+    .single_product_buttons
+    #button_favourites {
+    width: 25%;
+  }
+
+  .single-product-container
+    .single_product_details
+    .single_product_buttons
+    #button_add_to_card {
+    width: 70%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .single-product-page {
+    max-width: 70vw;
+  }
+  .single-product-container {
+    .single-product-image {
+      max-width: 30vh;
+      max-height: 30vh;
+    }
+  }
+}
+
+@media (max-width: 890px) {
+  .single-product-page {
+    max-width: 80vw;
+  }
+  .single-product-container {
+    .single_product_details {
+      width: 50%;
+      h1 {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .single-product-container {
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    padding: 0;
+    .single-product-image {
+      max-width: 400px;
+      max-height: 500px;
+      padding: 15px 30px;
+    }
+    .single_product_details {
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .single-product-container {
+    width: 100%;
+    .single-product-image {
+      max-width: 350px;
+      max-height: 450px;
+    }
+    .single_product_details {
+      width: 95%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .single-product-container {
+    width: 100%;
+    .single-product-image {
+      max-width: 200px;
+      max-height: 450px;
+      align-self: center;
+    }
+    .single_product_details {
+      width: 95%;
+    }
+  }
+}
+
+@media (max-width: 260px) {
+  .single-product-container {
+    width: 100%;
+    .single-product-image {
+      max-width: 150px;
+      max-height: 450px;
+    }
+    .single_product_details {
+      width: 95%;
+    }
+  }
+}
