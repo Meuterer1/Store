@@ -26,7 +26,7 @@ const App = () => {
           <Header />
           <Menu />
           <Routes>
-            <Route index element={<MainPage />} />
+            <Route index path='/' element={<MainPage />} />
             <Route path="/account" element={<LogInComponent />} />
             <Route path="/card_page" element={<CardPage />} />
             <Route path="/help" element={<ContactAndTerms />} />
