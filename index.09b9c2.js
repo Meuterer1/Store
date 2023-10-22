@@ -32519,21 +32519,20 @@ __webpack_require__(3792);
 const App = () => {
     return (react_1.default.createElement(react_1.default.StrictMode, null,
         react_1.default.createElement(react_redux_1.Provider, { store: Store_1.default },
-            react_1.default.createElement(react_router_dom_1.BrowserRouter, null,
-                react_1.default.createElement(Header_1.default, null),
-                react_1.default.createElement(Menu_1.default, null),
-                react_1.default.createElement(react_router_dom_1.Routes, null,
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/", element: react_1.default.createElement(MainPage_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/account", element: react_1.default.createElement(LogInComponent_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/card_page", element: react_1.default.createElement(CardPage_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/help", element: react_1.default.createElement(ContactAndTerms_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/products", element: react_1.default.createElement(Products_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/products/:category", element: react_1.default.createElement(Products_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/products/singleProduct/:id", element: react_1.default.createElement(ProductPage_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/summary", element: react_1.default.createElement(SummaryPage_1.default, null) }),
-                    react_1.default.createElement(react_router_dom_1.Route, { path: "/userPage", element: react_1.default.createElement(UserPage_1.default, null) })),
-                react_1.default.createElement(react_toastify_1.ToastContainer, { position: "bottom-right", autoClose: 2000, hideProgressBar: true, newestOnTop: false, closeOnClick: true, rtl: false, pauseOnFocusLoss: true, draggable: true, pauseOnHover: true, theme: "dark" }),
-                react_1.default.createElement(Footer_1.default, null)))));
+            react_1.default.createElement(Header_1.default, null),
+            react_1.default.createElement(Menu_1.default, null),
+            react_1.default.createElement(react_router_dom_1.Routes, null,
+                react_1.default.createElement(react_router_dom_1.Route, { index: true, element: react_1.default.createElement(MainPage_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/account", element: react_1.default.createElement(LogInComponent_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/card_page", element: react_1.default.createElement(CardPage_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/help", element: react_1.default.createElement(ContactAndTerms_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/products", element: react_1.default.createElement(Products_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/products/:category", element: react_1.default.createElement(Products_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/products/singleProduct/:id", element: react_1.default.createElement(ProductPage_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/summary", element: react_1.default.createElement(SummaryPage_1.default, null) }),
+                react_1.default.createElement(react_router_dom_1.Route, { path: "/userPage", element: react_1.default.createElement(UserPage_1.default, null) })),
+            react_1.default.createElement(react_toastify_1.ToastContainer, { position: "bottom-right", autoClose: 2000, hideProgressBar: true, newestOnTop: false, closeOnClick: true, rtl: false, pauseOnFocusLoss: true, draggable: true, pauseOnHover: true, theme: "dark" }),
+            react_1.default.createElement(Footer_1.default, null))));
 };
 exports["default"] = App;
 
@@ -32551,12 +32550,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const react_1 = __importDefault(__webpack_require__(7294));
 const client_1 = __importDefault(__webpack_require__(745));
+const react_router_dom_1 = __webpack_require__(9818);
 const App_1 = __importDefault(__webpack_require__(8957));
 __webpack_require__(4218);
 const rootElement = document.getElementById('root');
 if (rootElement) {
     const root = client_1.default.createRoot(rootElement);
-    root.render(react_1.default.createElement(App_1.default, null));
+    root.render(react_1.default.createElement(react_router_dom_1.HashRouter, null,
+        react_1.default.createElement(App_1.default, null)));
 }
 else {
     console.error("Element with ID 'root' not found in the document.");
