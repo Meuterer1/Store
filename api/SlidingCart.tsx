@@ -21,6 +21,15 @@ const SlidingCart: React.FC<CardProps> = ({ isOpen, onClose, cardItems }) => {
     (state) => state.card,
   );
   const delivery = deliveryCost - deliveryPromo;
+  let total = subtotal;
+  if (subtotal === 0) {
+    const itemCost = cardItems.find(item => {
+        return item
+    });
+    if (itemCost) {
+        total = delivery + (itemCost?.price * itemCost?.quantity);
+    }
+  }
 
   return (
     <div className={`sliding_panel `}>
@@ -49,7 +58,7 @@ const SlidingCart: React.FC<CardProps> = ({ isOpen, onClose, cardItems }) => {
               <h4>$ {delivery.toFixed(2)}</h4>
             </div>
             <h3>Suma: </h3>
-            <p>$ {subtotal.toFixed(2)}</p>
+            <p>$ {total.toFixed(2)}</p>
           </div>
         ) : (
           <h3 id="empty_card">Brak artykułów w koszyku</h3>
