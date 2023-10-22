@@ -23,7 +23,7 @@ const App = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <Router basename='/Store'>
+        <Router basename='/'>
           <Header />
           <Menu />
           <Routes>
