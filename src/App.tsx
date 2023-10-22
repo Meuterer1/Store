@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import CardPage from '../api/CardPage';
 import LogInComponent from '../api/LogInComponent';
@@ -23,7 +23,6 @@ const App = () => {
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <Router>
           <Header />
           <Menu />
           <Routes>
@@ -53,7 +52,6 @@ const App = () => {
             theme="dark"
           />
           <Footer />
-        </Router>
       </Provider>
     </React.StrictMode>
   );
