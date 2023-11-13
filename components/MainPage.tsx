@@ -72,7 +72,7 @@ const MainPage = () => {
           </button>
         </div>
         <div className="item">
-          <img src="/assets/leather_acket.jpg" alt="" />
+          <img src="./assets/leather_acket.jpg" alt="" />
           <button onClick={() => navigate(`/products/singleProduct/16`)}>
             szczegóły
           </button>
