@@ -49,7 +49,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/', // Wskazuje, gdzie mają być zapisywane pliki
+              outputPath: 'assets/',
             },
           },
         ],
