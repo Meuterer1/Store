@@ -94,7 +94,9 @@ const MainPage = () => {
             onChange={handleSubscribeInputChange}
             value={subscribe}
           />
-          <button className="subscribe_button">Subscribe Now</button>
+          <button className="subscribe_button" type="button">
+            Subscribe Now
+          </button>
         </form>
       </div>
 
