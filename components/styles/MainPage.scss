@@ -40,6 +40,24 @@ div.second {
   background-repeat: no-repeat;
 }
 
+.photo_left,
+.photo_right,
+.accessories,
+.winter_sale {
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.accessories,
+.winter_sale {
+  position: relative;
+  .sale_heading {
+    position: absolute;
+  }
+}
+
 .tail_left,
 .tail_right {
   align-items: center;
@@ -74,19 +92,11 @@ div.second {
   }
 }
 
-.photo_left {
-  background-image: url('../../public/assets/fashion-woman-girl-model-white-suit-sunglasses-street\ \(1\).jpg');
-}
-
 .tail_right {
   background-color: rgb(76, 151, 157);
   a {
     color: black;
   }
-}
-
-.photo_right {
-  background-image: url('../../public/assets//man-blue-suit-stands-street-sydney\ \(1\).jpg');
 }
 
 .tail_left {
@@ -224,15 +234,6 @@ h2 {
     font-size: 2rem;
   }
 }
-
-.accessories {
-  background-image: url('../../public/assets/woman-accessories-black-side-view.jpg');
-}
-
-.winter_sale {
-  background-image: url('../../public/assets/attractive-lady-velvet-dress-sunglasses-poses-outside.jpg');
-}
-
 @media (max-width: 1000px) {
   .photo_left,
   .tail_right,

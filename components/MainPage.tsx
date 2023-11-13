@@ -43,7 +43,12 @@ const MainPage = () => {
     <>
       <div className="container main_page_offer">
         <div className="first">
-          <div className="photo_left"></div>
+          <div className="photo_left">
+            <img
+              src="./assets/fashion-woman-girl-model-white-suit-sunglasses-street (1).jpg"
+              alt=""
+            />
+          </div>
           <div className="tail_right">
             <h3>Sultry & Smart</h3>
             <p>Hot spring looks</p>
@@ -56,7 +61,12 @@ const MainPage = () => {
             <p>Get ready for summer</p>
             <NavLink to="/products/men's clothing">Shop Men</NavLink>
           </div>
-          <div className="photo_right"></div>
+          <div className="photo_right">
+            <img
+              src="./assets/man-blue-suit-stands-street-sydney (1).jpg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
 
@@ -102,12 +112,21 @@ const MainPage = () => {
 
       <div className="container sale">
         <div className="accessories">
-          <p>Swoon-worthy</p>
-          <h3>Accessories</h3>
+          <img src="./assets/woman-accessories-black-side-view.jpg" alt="" />
+          <div className="sale_heading">
+            <p>Swoon-worthy</p>
+            <h3>Accessories</h3>
+          </div>
         </div>
         <div className="winter_sale">
-          <p>Winter Sale</p>
-          <h3>Now 30% off</h3>
+          <img
+            src="./assets/attractive-lady-velvet-dress-sunglasses-poses-outside.jpg"
+            alt=""
+          />
+          <div className="sale_heading">
+            <p>Winter Sale</p>
+            <h3>Now 30% off</h3>
+          </div>
         </div>
       </div>
     </>
