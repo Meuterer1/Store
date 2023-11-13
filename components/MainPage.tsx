@@ -64,7 +64,7 @@ const MainPage = () => {
         <h2>New arrivals</h2>
         <div className="item">
           <img
-            src="../../public/assets/woman_in_white_shirt.jpg"
+            src="./assets/woman_in_white_shirt.jpg"
             alt="woman in white shirt"
           />
           <button onClick={() => navigate(`/products/singleProduct/18`)}>
@@ -72,13 +72,13 @@ const MainPage = () => {
           </button>
         </div>
         <div className="item">
-          <img src="/assets/leather_acket.jpg" alt="" />
+          <img src="./assets/leather_acket.jpg" alt="" />
           <button onClick={() => navigate(`/products/singleProduct/16`)}>
             szczegóły
           </button>
         </div>
         <div className="item">
-          <img src="/public/assets/backpack.jpg" alt="" />
+          <img src="./assets/backpack.jpg" alt="" />
           <button onClick={() => navigate(`/products/singleProduct/1`)}>
             szczegóły
           </button>
