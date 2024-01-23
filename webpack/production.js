@@ -1,14 +1,10 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path').resolve;
 
 module.exports = {
-  optimization: {
-    minimizer: [new OptimizeCssAssetsWebpackPlugin({})],
-  },
   module: {
     rules: [
       {
