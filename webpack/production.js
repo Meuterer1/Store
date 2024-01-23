@@ -1,6 +1,9 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const path = require('path').resolve;
 
 module.exports = {
   optimization: {
@@ -61,6 +64,14 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style.[contenthash:6].css',
       chunkFilename: 'style.[contenthash:6].css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path(__dirname, '..', 'public', 'assets'),
+          to: path(__dirname, '..', 'build', 'assets'),
+        },
+      ],
     }),
   ],
 };
