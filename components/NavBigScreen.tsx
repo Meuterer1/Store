@@ -8,6 +8,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import Logo from './Logo';
+import SearchInput from './SearchInput';
 
 const { white, gray } = primaryTheme.colors;
 
@@ -35,25 +36,6 @@ const NavBigScreenComponent = styled.nav`
     font-size: 18px;
   }
 
-  .navSearchInput {
-    background-color: ${gray};
-    border-radius: 62px;
-    display: flex;
-    gap: 12px;
-    padding: 12px 16px;
-    width: 30%;
-
-    input {
-      border: none;
-      background: transparent;
-      width: 100%;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-
   .dropdown-content {
     background-color: white;
     border-radius: 20px;
@@ -78,6 +60,7 @@ const NavBigScreenComponent = styled.nav`
 
 const NavBigScreen = () => {
   const [showCategories, setShowCategories] = useState(false);
+
   const categories = useAppSelector(
     (state) => state.products.productsCategories,
   );
@@ -119,10 +102,7 @@ const NavBigScreen = () => {
           <Link to={'/help'}>Help</Link>
         </li>
       </ul>
-      <div className="navSearchInput">
-        <img src="assets/Frame.png" alt="" />
-        <input placeholder="Search for products..."></input>
-      </div>
+      <SearchInput />
 
       <div className="navIcons">
         <Link to={'/summary'}>

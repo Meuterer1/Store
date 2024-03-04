@@ -167,4 +167,33 @@ export const HeroSection = styled.section`
       }
     }
   }
+
+  @keyframes star {
+    0% {
+      opacity: 0;
+      transform: scale(1) translate(0%, 0);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1.2) translate(50%, -50%);
+    }
+    35% {
+      transform: scale(1) translate(100%, -65%);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(0.8) translate(150%, -80%);
+    }
+    65% {
+      transform: scale(1) translate(200%, -90%);
+    }
+    75% {
+      opacity: 0;
+      transform: scale(1) translate(220%, -100%);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1) translate(0, 0);
+    }
+  }
 `;

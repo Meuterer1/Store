@@ -47,7 +47,7 @@ const App = () => {
 
   return (
     <React.StrictMode>
-      {windowWidth < 1000 ? <NavSmallScreen /> : <NavBigScreen />}
+      {windowWidth < 1100 ? <NavSmallScreen /> : <NavBigScreen />}
 
       <Routes>
         <Route index path="/" element={<MainPage />} />

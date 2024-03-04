@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import Logo from './Logo';
+import SearchInput from './SearchInput';
 
 const { white, gray } = primaryTheme.colors;
 
@@ -19,6 +20,7 @@ const NavSmallScreenComponent = styled.nav`
 
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   gap: 40px;
 
@@ -118,6 +120,7 @@ const NavSmallScreenComponent = styled.nav`
 const NavSmallScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const animatedOpacity = useSpring({
     from: { opacity: 0 },
@@ -127,17 +130,26 @@ const NavSmallScreen = () => {
         duration: 500,
       },
     },
+
     config: { duration: 500 },
     reverse: !showMenu && true,
   });
 
-  const categories = useAppSelector(
-    (state) => state.products.productsCategories,
-  );
-
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
   };
+
+  const handleshowCategories = () => {
+    setShowCategories(!showCategories);
+  };
+
+  const handleShowSearch = () => {
+    setShowSearch(!showSearch);
+  };
+
+  const categories = useAppSelector(
+    (state) => state.products.productsCategories,
+  );
 
   const menuCategories = categories.map((category) => (
     <NavLink
@@ -149,10 +161,6 @@ const NavSmallScreen = () => {
     </NavLink>
   ));
 
-  const handleshowCategories = () => {
-    setShowCategories(!showCategories);
-  };
-
   return (
     <NavSmallScreenComponent>
       <div>
@@ -162,7 +170,9 @@ const NavSmallScreen = () => {
         <Logo />
       </div>
       <div>
-        <img src="/assets/Frame.png" aria-label="eye glass"></img>
+        <button type="button" onClick={handleShowSearch}>
+          <img src="/assets/Frame.png" aria-label="eye glass"></img>
+        </button>
         <FontAwesomeIcon icon={faShoppingBag} size="xl" />
         <FontAwesomeIcon icon={faUserCircle} size="xl" />
       </div>
@@ -220,6 +230,8 @@ const NavSmallScreen = () => {
           </div>
         </animated.div>
       )}
+
+      {showSearch && <SearchInput width="100%" />}
     </NavSmallScreenComponent>
   );
 };
