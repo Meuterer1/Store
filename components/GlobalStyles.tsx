@@ -1,4 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
+import primaryTheme from '../theme/theme';
+
+const { hoveredBlack, black } = primaryTheme.colors;
 
 const GlobalStyles = createGlobalStyle`
         * {
@@ -17,8 +20,16 @@ const GlobalStyles = createGlobalStyle`
                 height: 100%;
                 background-color: rgba(54, 54, 54, 0.5);
                 z-index: 999;
-}
+        }
 
+        a {
+                text-decoration: none;
+                color: ${black};
+
+                &:hover {
+                        color: ${hoveredBlack}
+                }
+        }
 
 `;
 

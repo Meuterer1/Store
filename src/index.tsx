@@ -5,7 +5,9 @@ import { HashRouter as Router } from 'react-router-dom';
 import GlobalStyles from '../components/GlobalStyles';
 import App from './App';
 
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import store from '../store/Store';
 import primaryTheme from '../theme/theme';
 
 const rootElement = document.getElementById('root');
@@ -16,7 +18,9 @@ if (rootElement) {
     <Router>
       <ThemeProvider theme={primaryTheme}>
         <GlobalStyles />
-        <App />
+        <Provider store={store}>
+          <App />
+        </Provider>
       </ThemeProvider>
     </Router>,
   );

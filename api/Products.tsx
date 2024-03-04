@@ -14,6 +14,7 @@ const Products = () => {
   const productList = ProductList();
   const navigate = useNavigate();
   const dispatch: any = useAppDispatch();
+  let categoryProductList;
 
   const { category } = useParams<{ category: string }>();
 
@@ -31,9 +32,13 @@ const Products = () => {
     fetchData();
   }, [dispatch, productList, category]);
 
-  const categoryProductList = useAppSelector(
-    (state) => state.products.productsByCategory,
-  );
+  if (category !== undefined) {
+    categoryProductList = useAppSelector(
+      (state) => state.products.productsByCategory,
+    );
+  } else {
+    categoryProductList = useAppSelector((state) => state.products.products);
+  }
 
   return (
     <>

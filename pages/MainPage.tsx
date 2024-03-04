@@ -1,30 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { getProducts } from '../actions/productActions/getProductsAction';
 import useMessage from '../api/hooks/useMessage';
 import Hero from '../components/Hero';
 
 import '../components/styles/MainPage.scss';
 
 const MainPage = () => {
-  const dispatch: any = useDispatch();
   const navigate = useNavigate();
   const message = useMessage();
   const [subscribe, setSubscribe] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        await dispatch(getProducts());
-      } catch (error) {
-        console.error('An error occurred:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleSubscribeInputChange = (e: any) => {
     setSubscribe(e.target.value);

@@ -1,4 +1,3 @@
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useRef, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
@@ -10,6 +9,7 @@ import useMessage from './hooks/useMessage';
 
 import { addToCard } from '../actions/cardActions/addToCard';
 
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import './styles/ProductPage.scss';
 
 const ProductPage = () => {
@@ -66,7 +66,7 @@ const ProductPage = () => {
       const newFavorites = [singleProduct];
       dispatch(addToFavourites(loggedUser, newFavorites));
     }
-  }, [isFavourite])
+  }, [isFavourite]);
 
   return (
     <>
