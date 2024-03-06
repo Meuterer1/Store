@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import useMessage from '../api/hooks/useMessage';
+import Banner from '../components/Banner';
 import Hero from '../components/Hero';
 
 import '../components/styles/MainPage.scss';
@@ -28,6 +29,7 @@ const MainPage = () => {
   return (
     <>
       <Hero />
+      <Banner />
 
       <div className="container new-arrivals">
         <h2>New arrivals</h2>
