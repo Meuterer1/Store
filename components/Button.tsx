@@ -9,6 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const ButtonComponent = styled.button<ButtonProps>`
   font-family: 'Satoshi-500', snas-serif;
+  font-size: 18px;
 
   border: none;
   border-radius: 62px;

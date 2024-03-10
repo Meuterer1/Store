@@ -31,6 +31,47 @@ const GlobalStyles = createGlobalStyle`
                 }
         }
 
+        h2 {
+                text-transform: uppercase;
+                width: 100%;
+                margin-top: 50px;
+                font-size: 60px;
+        }
+
+          @media (max-width: 400px) {
+                h2 {
+                        font-size: 30px;
+                }
+        }
+
+        ::-webkit-scrollbar {
+                width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 5px; 
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background-color: #555;
+        }
+
+        
+        ::-webkit-scrollbar-horizontal {
+        height: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:horizontal {
+        background-color: #888;
+        border-radius: 5px; 
+        }
+
+        ::-webkit-scrollbar-thumb:hover:horizontal {
+        background-color: #555;
+        }
+
+
 `;
 
 export default GlobalStyles;

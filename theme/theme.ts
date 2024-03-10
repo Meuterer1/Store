@@ -4,6 +4,7 @@ const primaryTheme = {
     hoveredBlack: '#00000099',
     softGray: '#00000066',
     gray: '#F2F0F1',
+    red: '#dd5656',
     white: '#FFFFFF',
   },
   fonts: {

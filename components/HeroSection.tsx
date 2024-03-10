@@ -15,7 +15,7 @@ export const HeroSection = styled.section`
     display: flex;
     flex-direction: column;
 
-    margin: 100px 0 116px 100px;
+    margin: 150px 0 116px 100px;
 
     width: 45%;
   }
@@ -58,7 +58,7 @@ export const HeroSection = styled.section`
 
   .hero-image {
     width: 50%;
-    height: 800px;
+    height: 900px;
     overflow: hidden;
     position: relative;
 

@@ -7,10 +7,8 @@ const NewArrivalsSection = styled.section`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 50px;
-  justify-content: center;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 90%;
   margin: 50px auto;
   text-align: center;
@@ -32,9 +30,11 @@ const NewArrivalsSection = styled.section`
     margin-top: 50px;
     overflow: hidden;
     position: relative;
-    -webkit-box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
-    -moz-box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
-    box-shadow: 0px 2px 8px 3px rgba(139, 142, 179, 1);
+
+    -webkit-box-shadow: 3px 3px 10px 4px rgba(89, 87, 87, 1);
+    -moz-box-shadow: 3px 3px 10px 4px rgba(89, 87, 87, 1);
+    box-shadow: 3px 3px 10px 4px rgba(89, 87, 87, 1);
+
     z-index: 1;
     transition: 1s;
     cursor: pointer;
@@ -54,7 +54,13 @@ const NewArrivalsSection = styled.section`
       background-blend: overlay;
 
       &::before {
-        content: '';
+        content: 'DETAILS';
+        font-family: 'Integral';
+        font-size: 58px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background: rgb(66, 66, 70, 0.2);
         position: absolute;
         top: 0;
@@ -66,6 +72,30 @@ const NewArrivalsSection = styled.section`
 
     img {
       max-height: 100%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+    height: auto;
+    justify-content: center;
+
+    .item {
+      height: 500px;
+      width: 80%;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 35px;
     }
   }
 `;
@@ -103,13 +133,13 @@ const NewArrivals = () => {
       </div>
       <div
         className="item"
-        onClick={() => navigate(`/products/singleProduct/18`)}
+        onClick={() => navigate(`/products/singleProduct/16`)}
       >
         <img src="./assets/leather_acket.jpg" alt="" />
       </div>
       <div
         className="item"
-        onClick={() => navigate(`/products/singleProduct/18`)}
+        onClick={() => navigate(`/products/singleProduct/1`)}
       >
         <img src="./assets/backpack.jpg" alt="" />
       </div>
