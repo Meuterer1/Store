@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
         a {
                 text-decoration: none;
                 color: ${black};
+                transition: 0.5s ease;
 
                 &:hover {
                         color: ${hoveredBlack}

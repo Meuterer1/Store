@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import ProductList from '../actions/productActions/ProductList';
 import getTrendingProducts from '../actions/productActions/getTrendingProductsAction';
-import './styles/DropdownList.scss';
+import primaryTheme from '../theme/theme';
 
 const SearchDropdownContainer = styled.div`
   background-color: white;
@@ -26,6 +26,87 @@ const SearchDropdownContainer = styled.div`
   p:first-of-type {
     text-transform: uppercase;
   }
+
+  .dropdown {
+    transition: 0.4s ease;
+    &:hover {
+      background-color: ${primaryTheme.colors.gray};
+      cursor: pointer;
+    }
+  }
+
+  .search-dropdown-item {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    border-radius: 20px;
+    max-height: 60px;
+    position: relative;
+    z-index: 2;
+
+    .search_dropdown_item_details {
+      background-color: transparent;
+      p {
+        background-color: transparent;
+      }
+      .search_dropdown_item_title {
+        font-weight: 800;
+      }
+    }
+    .search_dropdown_item_img {
+      align-items: center;
+      display: flex;
+      padding: 10px;
+      border-radius: 20px;
+      justify-content: center;
+      background-color: white;
+      height: 55px;
+      width: 65px;
+    }
+    img {
+      object-fit: contain;
+      max-height: 40px;
+      max-width: 50px;
+    }
+
+    &:hover {
+      background-color: ${primaryTheme.colors.gray};
+      cursor: pointer;
+    }
+
+    &::after {
+      content: '';
+      background-color: ${primaryTheme.colors.gray};
+      height: 1px;
+      width: 90%;
+      position: absolute;
+      transform: translateX(5%);
+      bottom: 0;
+      left: 0;
+    }
+  }
+  .title {
+    background-color: transparent;
+    font-family: ${primaryTheme.fonts.headerFont};
+    padding-left: 10px;
+  }
+
+  .search_dropdown_container {
+    background-color: rgb(245, 239, 239);
+    border: 0.5px solid black;
+    border-top: none;
+    font-size: $dropdown_font_size;
+    padding: 5px;
+    position: absolute;
+    width: 250px;
+
+    :hover {
+      background-color: rgb(2, 2, 2, 0.3);
+    }
+  }
 `;
 
 const DropdownList: React.FC<{
@@ -41,7 +122,7 @@ const DropdownList: React.FC<{
     const topRatedProducts = getTrendingProducts();
     const dropdown = topRatedProducts.map((product) => (
       <div
-        className="search_dropdown_item dropdown"
+        className="search-dropdown-item dropdown"
         key={product.id}
         onClick={() => handleDropdownClick(product.id)}
       >
@@ -70,7 +151,7 @@ const DropdownList: React.FC<{
     );
     const dropdown = filtered.map((product) => (
       <div
-        className="search_dropdown_item "
+        className="search-dropdown-item "
         key={product.id}
         onClick={() => handleDropdownClick(product.id)}
       >
@@ -92,7 +173,7 @@ const DropdownList: React.FC<{
 
     return (
       <SearchDropdownContainer className="dropdown">
-        <p className="title dropdown">
+        <p className="title">
           {value !== '' ? 'Result: ' : 'Trending products'}
         </p>
         {dropdown}

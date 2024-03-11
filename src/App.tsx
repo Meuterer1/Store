@@ -13,15 +13,21 @@ import Footer from '../components/Footer';
 import NavBigScreen from '../components/NavBigScreen';
 import NavSmallScreen from '../components/NavSmallScreen';
 import MainPage from '../pages/MainPage';
+import RootState from '../reducers/rootState';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getProducts } from '../actions/productActions/getProductsAction';
+import { useAppSelector } from '../store/Store';
 import './styles/App.scss';
 
 const App = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const dispatch: any = useDispatch();
+
+  const loggedUser = useAppSelector((state: RootState) => state.users.user);
+
+  const isLogged = loggedUser.find((user) => user.isLogged);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +57,10 @@ const App = () => {
 
       <Routes>
         <Route index path="/" element={<MainPage />} />
-        <Route path="/account" element={<LogInComponent />} />
+        <Route
+          path="/account"
+          element={isLogged ? <UserPage /> : <LogInComponent />}
+        />
         <Route path="/card_page" element={<CardPage />} />
         <Route path="/help" element={<ContactAndTerms />} />
         <Route path="/products" element={<Products />} />

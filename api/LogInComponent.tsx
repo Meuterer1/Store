@@ -72,6 +72,7 @@ const LogInSection = styled.section`
       font-size: 58px;
       font-family: ${primaryTheme.fonts.headerFont};
       position: relative;
+      transition: 0.5s ease;
 
       &:hover {
         cursor: pointer;
