@@ -2,6 +2,8 @@
 
 Live demo: https://winx-store.netlify.app/
 
+* Project had a little layout refactor recently and needs a bit of clean up :)
+
 ## Description
 The project is simple store, that uses Fake Store Api database.
 
