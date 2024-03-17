@@ -19,6 +19,16 @@ const EmptyCardSection = styled.section`
     object-fit: contain;
     text: white;
   }
+
+  @media (max-width: 500px) {
+    img {
+      width: 80%;
+      height: auto;
+    }
+    h2 {
+      font-size: 38px;
+    }
+  }
 `;
 
 const EmptyCard = () => {

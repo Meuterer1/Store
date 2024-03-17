@@ -18,6 +18,7 @@ import RootState from '../reducers/rootState';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getProducts } from '../actions/productActions/getProductsAction';
+import EmptyCard from '../components/EmptyCard';
 import { useAppSelector } from '../store/Store';
 import './styles/App.scss';
 
@@ -62,6 +63,7 @@ const App = () => {
           element={isLogged ? <UserPage /> : <LogInComponent />}
         />
         <Route path="/card_page" element={<CardPage />} />
+        <Route path="/empty_card" element={<EmptyCard />} />
         <Route path="/help" element={<ContactAndTerms />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:category" element={<Products />} />

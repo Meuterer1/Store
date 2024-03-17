@@ -9,6 +9,7 @@ const LogoComponent = styled.div`
   font-size: 32px;
   font-family: ${headerFont};
   text-transform: uppercase;
+  padding-bottom: 5px;
 
   @media (max-width: 420px) {
     font-size: 25px;

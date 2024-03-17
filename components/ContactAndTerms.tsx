@@ -1,7 +1,142 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import useMessage from '../api/hooks/useMessage';
 
-import './styles/ContactAndTerms.scss';
+import primaryTheme from '../theme/theme';
+import Button from './Button';
+//import './styles/ContactAndTerms.scss';
+
+const HelpSection = styled.section`
+  display: flex;
+  gap: 50px;
+  margin: 50px 5%;
+
+  .customer-care {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: ${primaryTheme.colors.gray};
+    text-align: center;
+    width: 40%;
+
+    padding: 50px;
+
+    border-radius: 20px;
+    h3 {
+      font-size: 30px;
+      font-family: ${primaryTheme.fonts.headerFont};
+      letter-spacing: 1.25px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .customer-care-info {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .form-inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 30px;
+
+    input {
+      padding: 15px 30px;
+      border-radius: 64px;
+      width: 100%;
+      border: 1px solid ${primaryTheme.colors.softGray};
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    textarea {
+      padding: 15px;
+      resize: none;
+      border-radius: 20px;
+      border: 1px solid ${primaryTheme.colors.softGray};
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .terms_questions {
+    border: 1px solid ${primaryTheme.colors.gray};
+    border-radius: 20px;
+    padding: 10px;
+    height: 200px;
+    width: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .terms {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 60%;
+    h2 {
+      width: 100%;
+      text-align: center;
+      font-family: ${primaryTheme.fonts.headerFont};
+      margin: 0 0 50px 0;
+    }
+    h3 {
+      margin: 0 0 15px 0;
+      font-family: ${primaryTheme.fonts.headerFont};
+      text-align: center;
+    }
+  }
+
+  ul {
+    list-style: none;
+    text-align: start;
+  }
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    gap: 50px;
+
+    .terms {
+      width: 100%;
+    }
+    .customer-care {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .customer-care {
+      padding: 30px;
+    }
+  }
+`;
 
 const ContactAndTerms = () => {
   const message = useMessage();
@@ -36,19 +171,19 @@ const ContactAndTerms = () => {
   };
 
   return (
-    <>
-      <div className="customer_care">
-        <div className="customer_care_info">
+    <HelpSection>
+      <div className="customer-care">
+        <div className="customer-care-info">
           <h3>Customer Care</h3>
-          <p>Masz wątpliwości lub obawy?</p>
-          <p>Zawsze jesteśmy gotowi pomóc! Skontaktuj się z nami</p>
+          <p>Are you unsure or concerned?</p>
+          <p>We're always here to help! Get in touch</p>
           <p>
-            telefonicznie: <strong>123-456-789</strong> lub mailowo:{' '}
+            by phone: <strong>123-456-789</strong> or via email:{' '}
             <strong>info@mysite.com</strong>
           </p>
         </div>
-        <div className="customer_care_form">
-          <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-inputs">
             <input
               name="name"
               type="text"
@@ -70,78 +205,81 @@ const ContactAndTerms = () => {
               value={form.subject}
               onChange={handleInputChange}
             />
-            <textarea
-              name="message"
-              rows={4}
-              cols={10}
-              placeholder="Wiadomość: "
-              value={form.message}
-              onChange={handleInputChange}
-            />
-            <button type="submit">Wyślij</button>
-          </form>
-        </div>
+          </div>
+
+          <textarea
+            name="message"
+            rows={4}
+            cols={10}
+            placeholder="Wiadomość: "
+            value={form.message}
+            onChange={handleInputChange}
+          />
+          <Button
+            type="submit"
+            content="Send"
+            background={primaryTheme.colors.black}
+            color={primaryTheme.colors.white}
+          />
+        </form>
       </div>
       <div className="terms">
         <h2>FAQ</h2>
         <div className="terms_questions">
-          <h3>Polityka zwrotów</h3>
+          <h3>Returns Policy</h3>
           <ul>
-            <li>Masz 30 dni na zwrot produktów od daty zakupu.</li>
-            <li>Produkty muszą być w oryginalnym stanie i opakowaniu.</li>
-            <li>Upewnij się, że masz dowód zakupu.</li>
-          </ul>
-        </div>
-        <div className="terms_questions">
-          <h3>Koszty dostawy</h3>
-          <ul>
-            <li>Darmowa dostawa przy zamówieniach powyżej 200 zł.</li>
-            <li>Wybierz dostawę kurierem, paczkomatem lub odbiór osobisty.</li>
-          </ul>
-        </div>
-        <div className="terms_questions">
-          <h3>Gwarancja jakości</h3>
-          <ul>
-            <li>Wszystkie nasze produkty objęte są dwuletnią gwarancją.</li>
             <li>
-              Skontaktuj się z nami w przypadku produktów wadliwych lub
-              uszkodzonych.
+              You have 30 days to return products from the date of purchase.
+            </li>
+            <li>Products must be in their original condition and packaging.</li>
+            <li>Make sure you have proof of purchase.</li>
+          </ul>
+        </div>
+        <div className="terms_questions">
+          <h3>Delivery Costs</h3>
+          <ul>
+            <li>Free delivery for orders over 200 zł.</li>
+            <li>Choose courier delivery, parcel locker, or personal pickup.</li>
+          </ul>
+        </div>
+        <div className="terms_questions">
+          <h3>Quality Guarantee</h3>
+          <ul>
+            <li>All our products are covered by a two-year warranty.</li>
+            <li>Contact us in case of defective or damaged products.</li>
+          </ul>
+        </div>
+        <div className="terms_questions">
+          <h3>Data and Payment Security</h3>
+          <ul>
+            <li>Your data is safe with us, we ensure its protection.</li>
+            <li>We use secure online payment methods.</li>
+          </ul>
+        </div>
+        <div className="terms_questions">
+          <h3>Privacy Policy</h3>
+          <ul>
+            <li>
+              Read our privacy policy to learn what data we collect and how we
+              use it.
             </li>
           </ul>
         </div>
         <div className="terms_questions">
-          <h3>Bezpieczeństwo danych i płatności</h3>
+          <h3>Customer Service</h3>
           <ul>
-            <li>Twoje dane są u nas bezpieczne, dbamy o ich ochronę.</li>
-            <li>Korzystamy z bezpiecznych metod płatności online.</li>
-          </ul>
-        </div>
-        <div className="terms_questions">
-          <h3>Polityka prywatności</h3>
-          <ul>
+            <li>We are available Monday to Friday from 9:00 to 17:00.</li>
             <li>
-              Przeczytaj naszą politykę prywatności, aby dowiedzieć się, jakie
-              dane zbieramy i jak je wykorzystujemy.
-            </li>
-          </ul>
-        </div>
-        <div className="terms_questions">
-          <h3>Obsługa klienta</h3>
-          <ul>
-            <li>
-              Jesteśmy dostępni od poniedziałku do piątku od 9:00 do 17:00.
-            </li>
-            <li>
-              Skontaktuj się z nami pod numerem telefonu
+              Contact us at phone number
               <strong>123-456-789</strong>
             </li>
             <li>
-              lub adresem e-mail: <strong>info@mysite.com</strong>
+              or email address: <strong>info@mysite.com</strong>
             </li>
           </ul>
         </div>
       </div>
-    </>
+    </HelpSection>
   );
 };
 

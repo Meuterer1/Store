@@ -1,12 +1,17 @@
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import { faBars, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faPowerOff,
+  faShoppingBag,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { animated } from '@react-spring/web';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSpring } from 'react-spring';
 import styled from 'styled-components';
-import { useAppSelector } from '../store/Store';
+import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
+import { useAppDispatch, useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import Logo from './Logo';
 import SearchInput from './SearchInput';
@@ -23,6 +28,10 @@ const NavSmallScreenComponent = styled.nav`
   flex-wrap: wrap;
   align-items: center;
   gap: 40px;
+
+  .log-out {
+    color: ${primaryTheme.colors.red};
+  }
 
   ul {
     list-style: none;
@@ -121,6 +130,10 @@ const NavSmallScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const users = useAppSelector((state) => state.users.user);
+  const loggedUser = users.find((user) => user.isLogged);
 
   const animatedOpacity = useSpring({
     from: { opacity: 0 },
@@ -151,6 +164,12 @@ const NavSmallScreen = () => {
     (state) => state.products.productsCategories,
   );
 
+  const handleLogOutButton = () => {
+    if (loggedUser) {
+      dispatch(setUserLogInStatus(loggedUser, false));
+    }
+  };
+
   const menuCategories = categories.map((category) => (
     <NavLink
       key={category}
@@ -173,8 +192,22 @@ const NavSmallScreen = () => {
         <button type="button" onClick={handleShowSearch}>
           <img src="/assets/Frame.png" aria-label="eye glass"></img>
         </button>
-        <FontAwesomeIcon icon={faShoppingBag} size="xl" />
-        <FontAwesomeIcon icon={faUserCircle} size="xl" />
+        <Link to={'/card_page'}>
+          <FontAwesomeIcon icon={faShoppingBag} size="xl"></FontAwesomeIcon>
+        </Link>
+        <Link to={'/account'}>
+          <FontAwesomeIcon icon={faUserCircle} size="xl"></FontAwesomeIcon>
+        </Link>
+        {loggedUser && (
+          <Link
+            to={''}
+            className="log-out"
+            onClick={handleLogOutButton}
+            title="log out"
+          >
+            <FontAwesomeIcon icon={faPowerOff} size="xl" />
+          </Link>
+        )}
       </div>
 
       {showMenu && (
@@ -217,7 +250,7 @@ const NavSmallScreen = () => {
                 </div>
               </li>
               <li>
-                <NavLink to="/produucts" onClick={handleShowMenu}>
+                <NavLink to="/products" onClick={handleShowMenu}>
                   Explore
                 </NavLink>
               </li>

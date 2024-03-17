@@ -13,7 +13,7 @@ const ButtonComponent = styled.button<ButtonProps>`
 
   border: none;
   border-radius: 62px;
-  padding: 16px 54px;
+  padding: 16px 32px;
 
   background-color: ${(props) => props.background};
   color: ${(props) => props.color};

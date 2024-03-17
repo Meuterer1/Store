@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import useMessage from '../api/hooks/useMessage';
 
 const NewArrivalsSection = styled.section`
   display: flex;
@@ -102,22 +101,6 @@ const NewArrivalsSection = styled.section`
 
 const NewArrivals = () => {
   const navigate = useNavigate();
-  const message = useMessage();
-  const [subscribe, setSubscribe] = useState('');
-
-  const handleSubscribeInputChange = (e: any) => {
-    setSubscribe(e.target.value);
-  };
-
-  const handleSubscribeButton = (event: any) => {
-    event?.preventDefault();
-    if (subscribe) {
-      message('success', 'Subskrybcja została ustawiona!');
-    } else {
-      message('warning', 'Uzupełnij poprawnie pola formularza!');
-    }
-    setSubscribe('');
-  };
 
   return (
     <NewArrivalsSection>

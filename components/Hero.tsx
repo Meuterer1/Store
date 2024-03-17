@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import primaryTheme from '../theme/theme';
 import Button from './Button';
 import { HeroSection } from './HeroSection';
 
 const Hero = () => {
   const { black, white } = primaryTheme.colors;
+  const navigate = useNavigate();
+
   return (
     <HeroSection>
       <div className="hero-content-container">
@@ -15,7 +18,12 @@ const Hero = () => {
             designed to bring out your individuality and cater to your sense of
             style.
           </p>
-          <Button background={black} color={white} content="Shop Now" />
+          <Button
+            background={black}
+            color={white}
+            content="Shop Now"
+            onClick={() => navigate('/products')}
+          />
         </div>
         <div className="hero-stats-container">
           <div className="hero-stats">

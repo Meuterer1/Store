@@ -188,9 +188,9 @@ const Footer = () => {
   const handleSubscribeButton = (event: any) => {
     event?.preventDefault();
     if (subscribe) {
-      message('success', 'Subskrybcja została ustawiona!');
+      message('success', 'You are assigned to subscribtions!');
     } else {
-      message('warning', 'Uzupełnij poprawnie pola formularza!');
+      message('warning', 'Fill all form fields!');
     }
     setSubscribe('');
   };

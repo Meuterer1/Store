@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { Link, NavLink } from 'react-router-dom';
-import { useAppSelector } from '../store/Store';
+import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
+import { useAppDispatch, useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import Logo from './Logo';
 import SearchInput from './SearchInput';
@@ -30,6 +31,7 @@ const NavBigScreenComponent = styled.nav`
   .navIcons {
     display: flex;
     gap: 24px;
+    position: relative;
   }
 
   a {
@@ -56,10 +58,25 @@ const NavBigScreenComponent = styled.nav`
       text-transform: uppercase;
     }
   }
+
+  .login-link {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .log-out {
+    color: ${primaryTheme.colors.red};
+  }
 `;
 
 const NavBigScreen = () => {
   const [showCategories, setShowCategories] = useState(false);
+  const dispatch = useAppDispatch();
+
+  const users = useAppSelector((state) => state.users.user);
+  const loggedUser = users.find((user) => user.isLogged);
 
   const categories = useAppSelector(
     (state) => state.products.productsCategories,
@@ -74,6 +91,12 @@ const NavBigScreen = () => {
       {category.slice(0, 1).toUpperCase() + category.slice(1).toLowerCase()}
     </NavLink>
   ));
+
+  const handleLogOutButton = () => {
+    if (loggedUser) {
+      dispatch(setUserLogInStatus(loggedUser, false));
+    }
+  };
 
   return (
     <NavBigScreenComponent>
@@ -105,12 +128,23 @@ const NavBigScreen = () => {
       <SearchInput />
 
       <div className="navIcons">
-        <Link to={'/summary'}>
+        <Link to={'/card_page'}>
           <FontAwesomeIcon icon={faShoppingBag} size="xl"></FontAwesomeIcon>
         </Link>
-        <Link to={'/account'}>
+        <Link to={'/account'} className="login-link">
           <FontAwesomeIcon icon={faUserCircle} size="xl"></FontAwesomeIcon>
+          {loggedUser && loggedUser.login}
         </Link>
+        {loggedUser && (
+          <Link
+            to={''}
+            className="log-out"
+            onClick={handleLogOutButton}
+            title="log out"
+          >
+            <FontAwesomeIcon icon={faPowerOff} size="xl" />
+          </Link>
+        )}
       </div>
     </NavBigScreenComponent>
   );

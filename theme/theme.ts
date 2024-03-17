@@ -9,7 +9,9 @@ const primaryTheme = {
   },
   fonts: {
     primaryFont: "'Satoshi', sans-serif;'",
-    headerFont: 'Integral, sans-serif',
+    primary500Font: "'Satoshi-500', sans-serif",
+    primary700Font: "'Satoshi-700', sans-serif;",
+    headerFont: 'Integral, sans-serif;',
   },
 };
 
