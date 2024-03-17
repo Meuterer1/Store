@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
 import { useAppDispatch, useAppSelector } from '../store/Store';
@@ -8,13 +9,152 @@ import useMessage from './hooks/useMessage';
 import { addUser } from '../actions/usersActions/addUser';
 
 import { useNavigate } from 'react-router-dom';
-import './styles/LogInComponent.scss';
+import Button from '../components/Button';
+import primaryTheme from '../theme/theme';
+
+const LogInSection = styled.section`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 1000px;
+  margin: 50px 0;
+  width: 100%;
+  overflow: hidden;
+
+  .log-in-photo {
+    height: 100%;
+    width: 50%;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .log-in-form {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  .account-registration-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    border-radius: 20px;
+    padding: 50px;
+    height: 100%;
+    text-align: center;
+    width: 50%;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      gap: 20px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    gap: 15px;
+
+    button {
+      background: transparent;
+      border: none;
+      font-size: 58px;
+      font-family: ${primaryTheme.fonts.headerFont};
+      position: relative;
+      transition: 0.5s ease;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .active {
+    color: black;
+
+    &:hover {
+      color: ${primaryTheme.colors.softGray};
+    }
+  }
+
+  .disabled {
+    color: ${primaryTheme.colors.gray};
+
+    &:hover {
+      color: ${primaryTheme.colors.softGray};
+    }
+  }
+
+  @media (max-width: 1500px) {
+    .buttons {
+      button {
+        font-size: 45px;
+      }
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .log-in-form {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .buttons {
+      button {
+        font-size: 38px;
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    height: auto;
+
+    .log-in-form {
+      width: 85%;
+    }
+
+    .account-registration-container {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .log-in-form {
+      width: 100%;
+      form {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    .buttons {
+      button {
+        font-size: 25px;
+      }
+    }
+  }
+`;
 
 const LogInComponent = () => {
   const users = useAppSelector((state) => state.users.user);
   const dispatch = useAppDispatch();
   const navitgate = useNavigate();
   const message = useMessage();
+
+  const [logIn, setLogIn] = useState(true);
 
   const [formLogIn, setFormLogIn] = useState({
     login: '',
@@ -31,7 +171,7 @@ const LogInComponent = () => {
     registrationHome: '',
     registrationCity: '',
     registrationZipCode: '',
-    registrationCountry: 'Polska',
+    registrationCountry: 'Poland',
     registrationCheckbox: false,
   });
 
@@ -41,17 +181,17 @@ const LogInComponent = () => {
       name: 'login',
       type: 'text',
       placeholder: 'Login',
-      errorMessage: 'Login nie jest poprawny',
+      errorMessage: 'Login is not valid',
       required: true,
     },
     {
       id: 3,
       name: 'password',
       type: 'password',
-      placeholder: 'Hasło',
-      errorMessage: 'Hasło nie jest poprawne',
+      placeholder: 'Password',
+      errorMessage: 'Password is not valid',
       required: true,
-      autoComplete: "off",
+      autoComplete: 'off',
     },
   ];
 
@@ -62,7 +202,7 @@ const LogInComponent = () => {
       type: 'text',
       placeholder: 'Login',
       errorMessage:
-        'Login powienien mieć od 3 do 16 znaków oraz nie powinien zawierać znaków specjalnych',
+        'Login should have 3 to 16 characters and should not contain special characters',
       pattern: '^[A-Za-z0-9]{3,16}$',
       required: true,
     },
@@ -71,37 +211,37 @@ const LogInComponent = () => {
       name: 'registrationEmail',
       type: 'email',
       placeholder: 'Email',
-      errorMessage: 'Email powinien być poprawny',
+      errorMessage: 'Email is not valid',
       required: true,
     },
     {
       id: 3,
       name: 'registrationPassword',
       type: 'password',
-      placeholder: 'Hasło',
+      placeholder: 'Password',
       errorMessage:
-        'Hasło powinno zawierać od 8 do 20 znaków oraz zawierać co najmniej 1. wielką literę, 1. znak specjalny oraz 1. cyfrę',
+        'Password should have from 8 to 20 characters and contains at least 1 capital letter, 1 special character and 1 number',
       pattern:
         '^(?=.*[a-zA-Z])(?=.*d)(?=.*[!@#$%^&*()_+])[A-Za-zd][A-Za-zd!@#$%^&*()_+]{8,20}$',
       required: true,
-      autoComplete: "off",
+      autoComplete: 'off',
     },
     {
       id: 4,
       name: 'registrationRepeatPassword',
       type: 'password',
-      placeholder: 'Powtórz hasło',
-      errorMessage: 'Wpisane hasła różnią się od siebie',
+      placeholder: 'Repeat password',
+      errorMessage: 'Passwords are different',
       pattern: formRegistration.registrationPassword,
       required: true,
-      autoComplete: "off",
+      autoComplete: 'off',
     },
     {
       id: 5,
       name: 'registrationStreet',
       type: 'text',
-      placeholder: 'Ulica',
-      errorMessage: 'Podaj ulicę',
+      placeholder: 'Street',
+      errorMessage: 'This field is required',
       pattern: '^[A-Za-z0-9]{3,25}$',
       required: true,
     },
@@ -109,8 +249,8 @@ const LogInComponent = () => {
       id: 6,
       name: 'registrationBuilding',
       type: 'text',
-      placeholder: 'Numer budynku',
-      errorMessage: 'Niepoprawny numer budynku',
+      placeholder: 'Building',
+      errorMessage: 'Building is not valid',
       pattern: '^[a-zA-Z0-9_.-]*$',
       required: true,
     },
@@ -118,8 +258,8 @@ const LogInComponent = () => {
       id: 7,
       name: 'registrationHome',
       type: 'text',
-      placeholder: 'Numer domu',
-      errorMessage: 'Numer domu powinien być cyfrą',
+      placeholder: 'Home number',
+      errorMessage: 'Home number should be a number',
       pattern: '^[0-9]*$',
       required: true,
     },
@@ -127,16 +267,16 @@ const LogInComponent = () => {
       id: 8,
       name: 'registrationCity',
       type: 'text',
-      placeholder: 'Miasto',
-      errorMessage: 'Podaj miasto',
+      placeholder: 'City',
+      errorMessage: 'City is required',
       required: true,
     },
     {
       id: 9,
       name: 'registrationZipCode',
       type: 'text',
-      placeholder: 'Kod Pocztowy',
-      errorMessage: 'Kod pocztowy powinien być w formacie 10-100',
+      placeholder: 'Zip Code',
+      errorMessage: 'Zip Code should have format like 10-100',
       pattern: '^[0-9]{2}-[0-9]{3}',
       required: true,
     },
@@ -144,7 +284,7 @@ const LogInComponent = () => {
       id: 10,
       name: 'registrationCountry',
       type: 'text',
-      placeholder: 'Kraj',
+      placeholder: 'Country',
       required: true,
     },
     {
@@ -152,8 +292,9 @@ const LogInComponent = () => {
       name: 'registrationCheckbox',
       type: 'checkbox',
       placeholder: '',
-      errorMessage: 'Potwierdź zapoznanie się z regulaminem',
-      label: 'Potwierdzam zapoznanie się z regulaminem',
+      errorMessage: 'Accept the terms',
+      label:
+        'I confirm that I have read and understood the terms and conditions',
       required: true,
     },
   ];
@@ -182,17 +323,14 @@ const LogInComponent = () => {
 
     if (isLoginValid && isPasswordValid) {
       dispatch(setUserLogInStatus(isLoginValid, true));
-      message('success', `Witaj, ${formLogIn.login}!`);
+      message('success', `Hello, ${formLogIn.login}!`);
       navitgate('/userPage');
     } else {
       setFormLogIn({
         login: '',
         password: '',
       });
-      message(
-        'warning',
-        `Wskazany użytkownik nie istnieje. Sprawdź login i hasło`,
-      );
+      message('warning', `User doesn't exist. Check login and password.`);
     }
   };
 
@@ -242,40 +380,70 @@ const LogInComponent = () => {
   };
 
   return (
-    <>
-      <div className="log_in_container">
-        <div className="account_registration_container">
-          <h2>Zaloguj się</h2>
-          <form onSubmit={handleLogInButton}>
-            {formLogInInputs.map((input) => (
-              <FormInput
-                key={input.id}
-                {...input}
-                onChange={handleLogInFormChange}
-                value={formLogIn[input.name as keyof typeof formLogIn]}
-              />
-            ))}
-            <button className='log_in_container_button'>Zaloguj</button>
-          </form>
+    <LogInSection>
+      <div className="account-registration-container">
+        <div className="buttons">
+          <button
+            className={logIn ? 'active' : 'disabled'}
+            onClick={() => setLogIn(true)}
+          >
+            Log In
+          </button>
+          <button
+            className={!logIn ? 'active' : 'disabled'}
+            onClick={() => setLogIn(false)}
+          >
+            Sing Up
+          </button>
         </div>
-        <div className="account_registration_container">
-          <h2>Nie masz konta? Załóż je!</h2>
-          <form onSubmit={handleRegistrationButton}>
-            {formRegistrationInputs.map((input) => (
-              <FormInput
-                key={input.id}
-                {...input}
-                onChange={handleRegistrationFormChange}
-                value={
-                  formRegistration[input.name as keyof typeof formRegistration]
-                }
-              />
-            ))}
-            <button className='log_in_container_button'>Zarejestruj</button>
-          </form>
-        </div>
+        {logIn ? (
+          <div className="log-in-form">
+            <form onSubmit={handleLogInButton}>
+              {formLogInInputs.map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  onChange={handleLogInFormChange}
+                  value={formLogIn[input.name as keyof typeof formLogIn]}
+                />
+              ))}
+              <Button
+                color={primaryTheme.colors.white}
+                background={primaryTheme.colors.black}
+                content="Log In"
+              ></Button>
+            </form>
+          </div>
+        ) : (
+          <div className="log-in-form">
+            <form onSubmit={handleRegistrationButton}>
+              {formRegistrationInputs.map((input) => (
+                <FormInput
+                  key={input.id}
+                  {...input}
+                  onChange={handleRegistrationFormChange}
+                  value={
+                    formRegistration[
+                      input.name as keyof typeof formRegistration
+                    ]
+                  }
+                />
+              ))}
+              <Button
+                content="Sign Up"
+                color={primaryTheme.colors.white}
+                background={primaryTheme.colors.black}
+              ></Button>
+            </form>
+          </div>
+        )}
       </div>
-    </>
+      {window.innerWidth > 1000 && (
+        <div className="log-in-photo">
+          <img src="assets/LogIn.jpg" alt="" />
+        </div>
+      )}
+    </LogInSection>
   );
 };
 

@@ -2,12 +2,14 @@ import { faWallet } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { updateOrders } from '../actions/usersActions/updateOrders';
 import { updateWallet } from '../actions/usersActions/updateWallet';
+import Button from '../components/Button';
 import { OrdersHistory } from '../reducers/usersReducer';
 import { useAppDispatch, useAppSelector } from '../store/Store';
+import primaryTheme from '../theme/theme';
 import useMessage from './hooks/useMessage';
-import './styles/Payment.scss';
 
 interface PaymentProps {
   orderValue: number;
@@ -15,38 +17,127 @@ interface PaymentProps {
 }
 
 interface LinkState {
-  wallet: boolean;
-  blik: boolean;
+  applePay: boolean;
+  googlePay: boolean;
+  masterCard: boolean;
+  payPal: boolean;
   visa: boolean;
+  wallet: boolean;
 }
 
-type LinkName = 'wallet' | 'blik' | 'visa';
+type LinkName = 'wallet' | 'applePay' | 'visa';
+
+const PaymentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+
+  a:first-of-type {
+    padding-top: 8px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  span {
+    width: 60px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+
+  .payment-item {
+    border-radius: 20px;
+    border: 1px solid ${primaryTheme.colors.gray};
+    padding: 5px 10px 0 15px;
+
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    p {
+      font-family: ${primaryTheme.fonts.primary700Font};
+      font-size: 18px;
+      width: 50%;
+      padding-bottom: 5px;
+    }
+  }
+
+  .wallet {
+    padding: 15px;
+    span {
+      margin-left: 10px;
+      width: 50px;
+    }
+    p {
+      padding: 0;
+    }
+  }
+
+  .tooltip {
+    width: 100%;
+    text-align: center;
+
+    p {
+      font-family: ${primaryTheme.fonts.primary500Font};
+    }
+  }
+
+  .payment_item_inputs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    gap: 15px;
+
+    button {
+      width: 100%;
+    }
+  }
+`;
 
 const Payment: React.FC<PaymentProps> = ({ orderValue, userNote }) => {
   const [isLinkActive, setIsLinkActive] = useState<LinkState>({
-    wallet: false,
-    blik: false,
+    applePay: false,
+    googlePay: false,
+    masterCard: false,
+    payPal: false,
     visa: false,
+    wallet: false,
   });
   const [isToolTipActive, setIsToolTipActive] = useState(false);
   const user = useAppSelector((state) => state.users.user);
   const loggedUser = user.find((user) => user.isLogged === true);
-  const orderDetails = useAppSelector(state => state.card);
+  const orderDetails = useAppSelector((state) => state.card);
 
-  const {subtotal, deliveryCost, deliveryPromo, promoCode, promoDiscount, note, isPromoActive} = orderDetails;
+  const {
+    subtotal,
+    deliveryCost,
+    deliveryPromo,
+    promoCode,
+    promoDiscount,
+    note,
+    isPromoActive,
+  } = orderDetails;
 
   const deliveryFinal = deliveryCost - deliveryPromo;
 
-  const orders:OrdersHistory = {
-        date: '',
-        subtotal: subtotal,
-        deliveryFinalCost: deliveryFinal,
-        promoCode: promoCode,
-        isPromoActive: isPromoActive,
-        promoDiscount: promoDiscount,
-        note: userNote,
-        products: orderDetails.card,
-  }
+  const orders: OrdersHistory = {
+    date: '',
+    subtotal: subtotal,
+    deliveryFinalCost: deliveryFinal,
+    promoCode: promoCode,
+    isPromoActive: isPromoActive,
+    promoDiscount: promoDiscount,
+    note: userNote,
+    products: orderDetails.card,
+  };
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const message = useMessage();
@@ -80,94 +171,97 @@ const Payment: React.FC<PaymentProps> = ({ orderValue, userNote }) => {
   };
 
   return (
-    <>
+    <PaymentContainer>
       <Link
         to=""
         data-name="wallet"
-        className="payment_item"
+        className="payment-item wallet"
         onClick={handlePaymentItemClick}
       >
         <span>
-          <FontAwesomeIcon icon={faWallet} size="2xl" />
+          <FontAwesomeIcon icon={faWallet} size="xl" />
         </span>
-        <p>Środki własne</p>
+        <p>Wallet</p>
       </Link>
       {isLinkActive.wallet &&
         (loggedUser ? (
           <div className="payment_item_inputs">
-            <h3>Twoje środki: </h3>
+            <h3>Your wallet: </h3>
             <p>$ {loggedUser?.wallet.toFixed(2)}</p>
-            <button onClick={handleConfirmPaymentButton}>
-              Potwierdź płatność
-            </button>
+            <Button
+              onClick={handleConfirmPaymentButton}
+              content="Confirm"
+              background={primaryTheme.colors.black}
+              color={primaryTheme.colors.white}
+            />
           </div>
         ) : (
-          <div className="payment_item_user_not_logged">
+          <div className="tooltip">
             <h4>
-              <Link to={'/account'}>Zaloguj się</Link> lub{' '}
-              <Link to={'/account'}>zarejestruj</Link>
+              <Link to={'/account'}>Log In</Link> or{' '}
+              <Link to={'/account'}>Sign Up</Link>
             </h4>
           </div>
         ))}
 
       <Link
         to=""
-        data-name="blik"
-        className="payment_item blik"
+        data-name="applePay"
+        className="payment-item"
         onClick={handlePaymentItemClick}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
       >
         <span>
-          <img src="/assets/payment logos/BLIK-LOGO-RGB.png" alt="BLIK" />
+          <img src="/assets/payment logos/applePay.png" alt="apple Pay" />
         </span>
-        <p>BLIK</p>
+        <p>Apple Pay</p>
       </Link>
-      {isLinkActive.blik && (
-        <div className="payment_item_inputs">
-          <input
-            type="text"
-            placeholder="Wpisz kod"
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-            readOnly
-          />
-          {isToolTipActive && (
-            <div className="tooltip">
-              <p>Płatność tymczasowo niedostępna</p>
-            </div>
-          )}
-        </div>
-      )}
       <Link
         to=""
         data-name="visa"
-        className="payment_item"
+        className="payment-item"
         onClick={handlePaymentItemClick}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
       >
-        <span className="visa">
-          <img
-            src="assets/payment logos/Visa_Brandmark_Blue_RGB.png"
-            alt="VISA"
-          />
+        <span>
+          <img src="assets/payment logos/Visa.png" alt="VISA" />
         </span>
-        <p>Karta Płatnicza</p>
+        <p>Credit Card</p>
       </Link>
-      {isLinkActive.visa && (
-        <div className="payment_item_inputs">
-          <input
-            type="text"
-            placeholder="Wpisz kod"
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-            readOnly
-          />
-          {isToolTipActive && (
-            <div className="tooltip">
-              <p>Płatność tymczasowo niedostępna</p>
-            </div>
-          )}
+      <Link
+        to=""
+        data-name="payPal"
+        className="payment-item"
+        onClick={handlePaymentItemClick}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
+      >
+        <span>
+          <img src="assets/payment logos/PayPal.png" alt="Pay Pal" />
+        </span>
+        <p>PayPal</p>
+      </Link>
+      <Link
+        to=""
+        data-name="googlePay"
+        className="payment-item"
+        onClick={handlePaymentItemClick}
+        onMouseEnter={handleOnMouseEnter}
+        onMouseLeave={handleOnMouseLeave}
+      >
+        <span>
+          <img src="assets/payment logos/GooglePay.png" alt="Google Pay" />
+        </span>
+        <p>Google Pay</p>
+      </Link>
+      {isToolTipActive && (
+        <div className="tooltip">
+          <p>Payment temporarily unavailable</p>
         </div>
       )}
-    </>
+    </PaymentContainer>
   );
 };
 
