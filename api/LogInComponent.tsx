@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
+import FormInput from '../components/Form';
+import useMessage from '../hooks/useMessage';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import FormInput from './Form/Form';
-import useMessage from './hooks/useMessage';
 
 import { addUser } from '../actions/usersActions/addUser';
 

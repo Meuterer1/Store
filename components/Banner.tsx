@@ -69,8 +69,6 @@ const Banner = () => {
           loop: true,
         });
 
-        console.log(animatedImage);
-
         return (
           <animated.img
             src={brand.src}

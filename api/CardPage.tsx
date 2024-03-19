@@ -12,8 +12,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import Cart from '../components/Cart';
+import useMessage from '../hooks/useMessage';
 import primaryTheme from '../theme/theme';
-import useMessage from './hooks/useMessage';
 
 const CardPageSection = styled.section`
   display: flex;

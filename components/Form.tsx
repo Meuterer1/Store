@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import primaryTheme from '../../theme/theme';
+
+import primaryTheme from '../theme/theme';
+
+const { red } = primaryTheme.colors;
 
 const FormContainer = styled.div`
   width: 100%;
@@ -18,7 +21,7 @@ const FormContainer = styled.div`
   }
 
   span {
-    color: ${primaryTheme.colors.red};
+    color: ${red};
   }
 
   .input-label {
@@ -27,7 +30,7 @@ const FormContainer = styled.div`
   }
 
   .error {
-    border: 2px solid ${primaryTheme.colors.red};
+    border: 2px solid ${red};
   }
 `;
 

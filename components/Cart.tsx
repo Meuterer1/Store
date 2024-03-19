@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import ViewCart from '../api/ViewCart';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
+
+const { gray } = primaryTheme.colors;
 
 const CartSection = styled.section`
   display: flex;
   flex-wrap: wrap;
 
-  border: 1px solid ${primaryTheme.colors.gray};
+  border: 1px solid ${gray};
   border-radius: 20px;
   padding: 20px;
 
