@@ -4,7 +4,6 @@ import Button from '../components/Button';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import ViewCart from './ViewCart';
-//import './styles/UserPage.scss';
 
 const UserPageSection = styled.section`
   display: flex;

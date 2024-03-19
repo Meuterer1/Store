@@ -14,7 +14,6 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import primaryTheme from '../theme/theme';
-import './styles/ProductPage.scss';
 
 const SingleProductContainer = styled.section`
   display: flex;

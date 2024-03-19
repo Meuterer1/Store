@@ -4,7 +4,6 @@ import useMessage from '../api/hooks/useMessage';
 
 import primaryTheme from '../theme/theme';
 import Button from './Button';
-//import './styles/ContactAndTerms.scss';
 
 const HelpSection = styled.section`
   display: flex;

@@ -6,7 +6,6 @@ import ViewCart from './ViewCart';
 
 import { removeFromCardAction } from '../actions/cardActions/removeFromCard';
 import primaryTheme from '../theme/theme';
-//import './styles/Summary.scss';
 
 const SummarySection = styled.section`
   display: flex;
