@@ -1,4 +1,5 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate } from 'react-router-dom';
 
 import { NewArrivalsSection } from './styled_components/NewArrivalsSection';
@@ -13,8 +14,8 @@ const NewArrivals = () => {
         className="item"
         onClick={() => navigate(`/products/singleProduct/18`)}
       >
-        <img
-          src="./assets/woman_in_white_shirt.jpg"
+        <LazyLoadImage
+          src="./assets/woman_in_white_shirt.png"
           alt="woman in white shirt"
         />
       </div>
@@ -22,13 +23,16 @@ const NewArrivals = () => {
         className="item"
         onClick={() => navigate(`/products/singleProduct/16`)}
       >
-        <img src="./assets/leather_acket.jpg" alt="" />
+        <LazyLoadImage
+          src="./assets/leather_acket.png"
+          alt="woman in leather jacket"
+        />
       </div>
       <div
         className="item"
         onClick={() => navigate(`/products/singleProduct/1`)}
       >
-        <img src="./assets/backpack.jpg" alt="" />
+        <LazyLoadImage src="./assets/backpack.png" alt="men with backpack" />
       </div>
     </NewArrivalsSection>
   );
