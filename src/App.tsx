@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getProducts } from '../actions/productActions/getProductsAction';
 import EmptyCard from '../components/EmptyCard';
+import ScrollToTop from '../components/ScrollToTop';
 import { useAppSelector } from '../store/Store';
 import './styles/App.scss';
 
@@ -84,6 +85,7 @@ const App = () => {
         theme="dark"
       />
       <Footer />
+      <ScrollToTop />
     </React.StrictMode>
   );
 };
