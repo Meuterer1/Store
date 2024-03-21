@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ViewCart from '../api/ViewCart';
+import ViewCart from '../standalones/ViewCart';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 

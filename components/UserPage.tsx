@@ -1,96 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import Button from '../components/Button';
+
+import Button from '../standalones/Button';
+import ViewCart from '../standalones/ViewCart';
 import { useAppSelector } from '../store/Store';
-import primaryTheme from '../theme/theme';
-import ViewCart from './ViewCart';
-
-const UserPageSection = styled.section`
-  display: flex;
-  justify-content: space-between;
-  margin: 100px 5% 0 5%;
-
-  .user-orders-history {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
-    width: 50%;
-
-    h3 {
-      text-transform: uppercase;
-      font-size: 20px;
-    }
-  }
-
-  .single-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .user-account {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 20px;
-    border: 1px solid ${primaryTheme.colors.gray};
-    width: 40%;
-    padding: 15px;
-    text-align: end;
-    justify-content: center;
-    height: fit-content;
-  }
-
-  .user_account_details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    gap: 20px;
-
-    .user-orders-history,
-    .user-account {
-      width: 100%;
-
-      h3 {
-        font-size: 18px;
-      }
-    }
-  }
-`;
-
-const SingleOrderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  border: 1px solid ${primaryTheme.colors.gray};
-  border-radius: 20px;
-  padding: 15px;
-  gap: 10px;
-
-  .single-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    p {
-      text-align: end;
-    }
-  }
-
-  .item-content-details {
-    padding: 10px 0 0 10px;
-  }
-  .description {
-    width: 30%;
-  }
-
-  @media (max-width: 1000px) {
-    width: 100%;
-  }
-`;
+import { SingleOrderContainer } from '../styled_components/SingleOrderContainer';
+import { UserPageSection } from '../styled_components/UserPageSection';
 
 const UserPage = () => {
   const users = useAppSelector((state) => state.users.user);

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import primaryTheme from '../../theme/theme';
+import primaryTheme from '../theme/theme';
 
 const { headerFont, primary700Font } = primaryTheme.fonts;
 const { gray, hoveredBlack } = primaryTheme.colors;

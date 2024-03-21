@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Card } from '../reducers/cardReducer';
+import ViewCart from '../standalones/ViewCart';
 import { useAppSelector } from '../store/Store';
-import ViewCart from './ViewCart';
 
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,11 +23,11 @@ const SlidingCart: React.FC<CardProps> = ({ isOpen, onClose, cardItems }) => {
   const delivery = deliveryCost - deliveryPromo;
   let total = subtotal;
   if (subtotal === 0) {
-    const itemCost = cardItems.find(item => {
-        return item
+    const itemCost = cardItems.find((item) => {
+      return item;
     });
     if (itemCost) {
-        total = delivery + (itemCost?.price * itemCost?.quantity);
+      total = delivery + itemCost?.price * itemCost?.quantity;
     }
   }
 

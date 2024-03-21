@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import primaryTheme from '../../theme/theme';
+import primaryTheme from '../theme/theme';
 
 export const HeroSection = styled.section`
   background: ${primaryTheme.colors.gray};

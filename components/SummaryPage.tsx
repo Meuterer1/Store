@@ -1,101 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
-import EmptyCard from '../components/EmptyCard';
-import { useAppDispatch, useAppSelector } from '../store/Store';
-import ViewCart from './ViewCart';
 
 import { removeFromCardAction } from '../actions/cardActions/removeFromCard';
-import primaryTheme from '../theme/theme';
-
-const SummarySection = styled.section`
-  display: flex;
-  justify-content: space-between;
-
-  margin: 100px 5%;
-
-  .header {
-    font-family: ${primaryTheme.fonts.headerFont};
-  }
-  .payment-summary-details {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid ${primaryTheme.colors.gray};
-    border-radius: 20px;
-    width: 50%;
-    padding: 20px;
-
-    h3 {
-      font-family: ${primaryTheme.fonts.primary700Font};
-    }
-
-    .header {
-      font-family: ${primaryTheme.fonts.headerFont};
-    }
-
-    .subtotal {
-      position: relative;
-      margin-top: 5px;
-      padding-top: 5px;
-
-      &::before {
-        content: '';
-        width: 100%;
-        height: 1px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: ${primaryTheme.colors.gray};
-      }
-    }
-  }
-
-  .single-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .payment {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-radius: 20px;
-    padding: 20px;
-    height: fit-content;
-    border: 1px solid ${primaryTheme.colors.gray};
-
-    h4 {
-      width: 40%;
-    }
-
-    h3 {
-      font-family: ${primaryTheme.fonts.primary700Font};
-    }
-
-    .header {
-      font-family: ${primaryTheme.fonts.headerFont};
-    }
-
-    p {
-      text-align: end;
-    }
-  }
-
-  @media (max-width: 1100px) {
-    flex-direction: column;
-    gap: 50px;
-
-    .payment {
-      width: 100%;
-    }
-
-    .payment-summary-details {
-      width: 100%;
-    }
-  }
-`;
+import ViewCart from '../standalones/ViewCart';
+import { useAppDispatch, useAppSelector } from '../store/Store';
+import { SummarySection } from '../styled_components/SummarySection';
+import EmptyCard from './EmptyCard';
 
 const SummaryPage = () => {
   const cardItems = useAppSelector((state) => state.card.card);

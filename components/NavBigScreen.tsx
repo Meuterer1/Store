@@ -6,10 +6,10 @@ import { faPowerOff, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
+import Logo from '../standalones/Logo';
+import SearchInput from '../standalones/SearchInput';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import Logo from './Logo';
-import SearchInput from './SearchInput';
-import { NavBigScreenComponent } from './styled_components/NavBigScreenComponent';
+import { NavBigScreenComponent } from '../styled_components/NavBigScreenComponent';
 
 const NavBigScreen = () => {
   const [showCategories, setShowCategories] = useState(false);
