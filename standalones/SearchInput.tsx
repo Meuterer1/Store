@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { animated } from 'react-spring';
 import styled from 'styled-components';
-import DropdownList from '../api/DropdownList';
+import DropdownList from '../components/DropdownList';
 import primaryTheme from '../theme/theme';
 
 const { gray } = primaryTheme.colors;

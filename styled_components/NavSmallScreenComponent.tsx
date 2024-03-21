@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import primaryTheme from '../../theme/theme';
+import primaryTheme from '../theme/theme';
 
 const { gray, red, white } = primaryTheme.colors;
 const { headerFont } = primaryTheme.fonts;

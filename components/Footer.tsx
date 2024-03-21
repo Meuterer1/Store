@@ -11,8 +11,8 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import useMessage from '../hooks/useMessage';
-import Logo from './Logo';
-import { FooterSection } from './styled_components/FooterSection';
+import Logo from '../standalones/Logo';
+import { FooterSection } from '../styled_components/FooterSection';
 
 const Footer = () => {
   const message = useMessage();

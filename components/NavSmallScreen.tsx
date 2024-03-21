@@ -12,10 +12,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
+import Logo from '../standalones/Logo';
+import SearchInput from '../standalones/SearchInput';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import Logo from './Logo';
-import SearchInput from './SearchInput';
-import { NavSmallScreenComponent } from './styled_components/NavSmallScreenComponent';
+import { NavSmallScreenComponent } from '../styled_components/NavSmallScreenComponent';
 
 const NavSmallScreen = () => {
   const [showMenu, setShowMenu] = useState(false);

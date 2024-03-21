@@ -4,8 +4,8 @@ import useMessage from '../hooks/useMessage';
 
 import primaryTheme from '../theme/theme';
 
-import Button from './Button';
-import { HelpSection } from './styled_components/HelpSection';
+import Button from '../standalones/Button';
+import { HelpSection } from '../styled_components/HelpSection';
 
 const ContactAndTerms = () => {
   const message = useMessage();

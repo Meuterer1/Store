@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 
-import { SetPromoActive } from '../actions/cardActions/setPromoActive';
-import { updateSubTotal } from '../actions/cardActions/subTotal';
-import { useAppDispatch, useAppSelector } from '../store/Store';
-import Payment from './Payment';
-
-import EmptyCard from '../components/EmptyCard';
-
 import { faClipboard, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from '../components/Button';
-import Cart from '../components/Cart';
-import { CardPageSection } from '../components/styled_components/CardPageSection';
-import useMessage from '../hooks/useMessage';
 
+import { SetPromoActive } from '../actions/cardActions/setPromoActive';
+import { updateSubTotal } from '../actions/cardActions/subTotal';
+import useMessage from '../hooks/useMessage';
+import Button from '../standalones/Button';
+import { useAppDispatch, useAppSelector } from '../store/Store';
+import { CardPageSection } from '../styled_components/CardPageSection';
 import primaryTheme from '../theme/theme';
+import Cart from './Cart';
+import EmptyCard from './EmptyCard';
+import Payment from './Payment';
 
 const CardPage = () => {
   const message = useMessage();

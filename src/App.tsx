@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
-import CardPage from '../api/CardPage';
-import LogInComponent from '../api/LogInComponent';
-import ProductPage from '../api/ProductPage';
-import Products from '../api/Products';
-import SummaryPage from '../api/SummaryPage';
-import UserPage from '../api/UserPage';
+import CardPage from '../components/CardPage';
 import ContactAndTerms from '../components/ContactAndTerms';
 import Footer from '../components/Footer';
+import LogInComponent from '../components/LogInComponent';
 import NavBigScreen from '../components/NavBigScreen';
 import NavSmallScreen from '../components/NavSmallScreen';
+import ProductPage from '../components/ProductPage';
+import Products from '../components/Products';
+import SummaryPage from '../components/SummaryPage';
+import UserPage from '../components/UserPage';
 import MainPage from '../pages/MainPage';
 import RootState from '../reducers/rootState';
 

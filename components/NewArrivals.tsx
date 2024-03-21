@@ -2,7 +2,7 @@ import React from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useNavigate } from 'react-router-dom';
 
-import { NewArrivalsSection } from './styled_components/NewArrivalsSection';
+import { NewArrivalsSection } from '../styled_components/NewArrivalsSection';
 
 const NewArrivals = () => {
   const navigate = useNavigate();

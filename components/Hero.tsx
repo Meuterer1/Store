@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../standalones/Button';
+import { HeroSection } from '../styled_components/HeroSection';
 import primaryTheme from '../theme/theme';
-import Button from './Button';
-import { HeroSection } from './styled_components/HeroSection';
 
 const Hero = () => {
   const { black, white } = primaryTheme.colors;
