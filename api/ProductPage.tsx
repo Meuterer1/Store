@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ProductList from '../actions/productActions/ProductList';
 import getSingleProduct from '../actions/productActions/getSingleProduct';
 import { addToFavourites } from '../actions/usersActions/addToFavourites';
+import useMessage from '../hooks/useMessage';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import useMessage from './hooks/useMessage';
 
 import { addToCard } from '../actions/cardActions/addToCard';
 
@@ -14,7 +14,6 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import Button from '../components/Button';
 import primaryTheme from '../theme/theme';
-import './styles/ProductPage.scss';
 
 const SingleProductContainer = styled.section`
   display: flex;

@@ -4,7 +4,6 @@ import Button from '../components/Button';
 import { useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
 import ViewCart from './ViewCart';
-//import './styles/UserPage.scss';
 
 const UserPageSection = styled.section`
   display: flex;
@@ -118,7 +117,7 @@ const UserPage = () => {
 
         <div className="single-row">
           <h4 className="description">Delivery:</h4>
-          <p>$ {order.deliveryFinalCost}</p>
+          <p>$ {order.deliveryFinalCost.toFixed(2)}</p>
         </div>
         {order.isPromoActive && (
           <div className="single-row">

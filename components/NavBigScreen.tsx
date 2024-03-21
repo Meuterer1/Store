@@ -1,75 +1,15 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { Link, NavLink } from 'react-router-dom';
 
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { faPowerOff, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
-import { Link, NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import primaryTheme from '../theme/theme';
 import Logo from './Logo';
 import SearchInput from './SearchInput';
-
-const { white, gray } = primaryTheme.colors;
-
-const NavBigScreenComponent = styled.nav`
-  background: ${white};
-  margin: 24px 100px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-  }
-
-  .navIcons {
-    display: flex;
-    gap: 24px;
-    position: relative;
-  }
-
-  a {
-    font-size: 18px;
-  }
-
-  .dropdown-content {
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 10px;
-    padding: 20px 15px;
-    position: absolute;
-    z-index: 1;
-
-    -webkit-box-shadow: 0px 0px 32px -12px rgba(66, 68, 90, 1);
-    -moz-box-shadow: 0px 0px 32px -12px rgba(66, 68, 90, 1);
-    box-shadow: 0px 0px 32px -12px rgba(66, 68, 90, 1);
-
-    p:first-of-type {
-      text-transform: uppercase;
-    }
-  }
-
-  .login-link {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  .log-out {
-    color: ${primaryTheme.colors.red};
-  }
-`;
+import { NavBigScreenComponent } from './styled_components/NavBigScreenComponent';
 
 const NavBigScreen = () => {
   const [showCategories, setShowCategories] = useState(false);

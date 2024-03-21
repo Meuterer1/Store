@@ -2,6 +2,7 @@ import React from 'react';
 
 import Banner from '../components/Banner';
 import Hero from '../components/Hero';
+
 import NewArrivals from '../components/NewArrivals';
 
 const MainPage = () => {

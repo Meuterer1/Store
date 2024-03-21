@@ -1,7 +1,7 @@
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import useMessage from './hooks/useMessage';
+import useMessage from '../hooks/useMessage';
 
 import styled from 'styled-components';
 import { removeFromCardAction } from '../actions/cardActions/removeFromCard';

@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import { updateOrders } from '../actions/usersActions/updateOrders';
 import { updateWallet } from '../actions/usersActions/updateWallet';
 import Button from '../components/Button';
+import useMessage from '../hooks/useMessage';
 import { OrdersHistory } from '../reducers/usersReducer';
 import { useAppDispatch, useAppSelector } from '../store/Store';
 import primaryTheme from '../theme/theme';
-import useMessage from './hooks/useMessage';
 
 interface PaymentProps {
   orderValue: number;

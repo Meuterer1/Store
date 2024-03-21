@@ -1,3 +1,8 @@
+import { animated } from '@react-spring/web';
+import React, { useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { useSpring } from 'react-spring';
+
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import {
   faBars,
@@ -5,126 +10,12 @@ import {
   faShoppingBag,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { animated } from '@react-spring/web';
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { useSpring } from 'react-spring';
-import styled from 'styled-components';
+
 import { setUserLogInStatus } from '../actions/usersActions/setUserLoginStatus';
 import { useAppDispatch, useAppSelector } from '../store/Store';
-import primaryTheme from '../theme/theme';
 import Logo from './Logo';
 import SearchInput from './SearchInput';
-
-const { white, gray } = primaryTheme.colors;
-
-const NavSmallScreenComponent = styled.nav`
-  background: ${white};
-  margin: 24px;
-  width: 90%;
-
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 40px;
-
-  .log-out {
-    color: ${primaryTheme.colors.red};
-  }
-
-  ul {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  a {
-    font-size: 16px;
-  }
-
-  button {
-    background-color: transparent;
-
-    border: none;
-    margin-top: 6px;
-  }
-
-  .close_button {
-    font-family: ${primaryTheme.fonts.headerFont};
-    width: 21px;
-    height: 24px;
-  }
-
-  .nav_small_screen {
-    background-color: black;
-    color: ${white};
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    padding: 24px;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100%;
-    z-index: 1;
-
-    .header_nav {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 24px;
-      width: 100%;
-    }
-
-    .nav_content {
-      margin: 30px 50px;
-    }
-
-    button {
-      color: ${white};
-    }
-
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-
-      ul {
-        display: flex;
-        flex-direction: column;
-
-        a {
-          color: ${white};
-        }
-      }
-
-      .dropdown-content {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin-left: 20px;
-
-        a {
-          color: ${gray};
-        }
-      }
-    }
-  }
-
-  @media (max-width: 420px) {
-    .logo {
-      display: none;
-    }
-  }
-`;
+import { NavSmallScreenComponent } from './styled_components/NavSmallScreenComponent';
 
 const NavSmallScreen = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -212,12 +103,12 @@ const NavSmallScreen = () => {
 
       {showMenu && (
         <animated.div
-          className={`nav_small_screen`}
+          className={`nav-small-screen`}
           style={{ ...animatedOpacity }}
         >
           <div className="header_nav">
             <button
-              className="close_button"
+              className="close-button"
               aria-label="close"
               title="close"
               type="button"
@@ -228,7 +119,7 @@ const NavSmallScreen = () => {
             <Logo />
           </div>
 
-          <div className="nav_content">
+          <div className="nav-content">
             <ul>
               <li className="bold">
                 <NavLink to="/" onClick={handleShowMenu}>
@@ -237,11 +128,7 @@ const NavSmallScreen = () => {
               </li>
               <li>
                 <div className="dropdown">
-                  <button
-                    className="categories_button"
-                    type="button"
-                    onClick={handleshowCategories}
-                  >
+                  <button type="button" onClick={handleshowCategories}>
                     Categories
                   </button>
                   {showCategories && (
