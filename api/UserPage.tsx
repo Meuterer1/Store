@@ -117,7 +117,7 @@ const UserPage = () => {
 
         <div className="single-row">
           <h4 className="description">Delivery:</h4>
-          <p>$ {order.deliveryFinalCost}</p>
+          <p>$ {order.deliveryFinalCost.toFixed(2)}</p>
         </div>
         {order.isPromoActive && (
           <div className="single-row">
