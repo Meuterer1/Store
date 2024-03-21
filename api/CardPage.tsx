@@ -9,160 +9,20 @@ import EmptyCard from '../components/EmptyCard';
 
 import { faClipboard, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
 import Button from '../components/Button';
 import Cart from '../components/Cart';
+import { CardPageSection } from '../components/styled_components/CardPageSection';
 import useMessage from '../hooks/useMessage';
+
 import primaryTheme from '../theme/theme';
-
-const CardPageSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  margin: 20px 5%;
-
-  h2 {
-    text-transform: uppercase;
-    font-family: ${primaryTheme.fonts.headerFont};
-    font-size: 38px;
-  }
-
-  .cart {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .summary {
-    border: 1px solid ${primaryTheme.colors.gray};
-    border-radius: 20px;
-    padding: 20px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    width: 45%;
-
-    h3 {
-      font-size: 24px;
-      font-family: ${primaryTheme.fonts.primary700Font};
-    }
-  }
-
-  .summary-details {
-    width: 100%;
-    align-items: center;
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
-
-    p {
-      color: rgba(0, 0, 0, 0.6);
-    }
-
-    h4 {
-      font-size: 20px;
-      font-family: ${primaryTheme.fonts.primary700Font};
-    }
-  }
-
-  .subtotal {
-    padding-top: 15px;
-    position: relative;
-
-    &::before {
-      content: '';
-      background-color: ${primaryTheme.colors.gray};
-      height: 1px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    h4 {
-      font-size: 22px;
-    }
-  }
-
-  .promos {
-    display: flex;
-    flex-direction: column;
-
-    .transparent-button {
-      border: none;
-      background: transparent;
-      display: flex;
-      gap: 10px;
-      margin: 10px 0;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
-
-  .promo-code-details {
-    display: flex;
-    gap: 10px;
-  }
-
-  .promo-input {
-    padding: 5px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: ${primaryTheme.colors.gray};
-    border-radius: 62px;
-    width: 100%;
-    color: ${primaryTheme.colors.hoveredBlack};
-
-    input {
-      border: none;
-      background: transparent;
-      height: 18px;
-      width: 100%;
-
-      &:focus {
-        outline: none;
-      }
-    }
-  }
-
-  textarea {
-    width: 100%;
-    border-radius: 20px;
-    border: 1px solid ${primaryTheme.colors.gray};
-    padding: 15px;
-    color: ${primaryTheme.colors.hoveredBlack};
-
-    &:focus {
-      outline: ${primaryTheme.colors.gray};
-    }
-  }
-
-  @media (max-width: 1000px) {
-    .summary {
-      width: 100%;
-    }
-
-    .cart {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-  }
-`;
 
 const CardPage = () => {
   const message = useMessage();
   const cardItems = useAppSelector((state) => state.card.card);
 
-  const {
-    deliveryCost,
-    deliveryPromo,
-    promoCode,
-    promoDiscount,
-    subtotal,
-    isPromoActive,
-  } = useAppSelector((state) => state.card);
+  const { deliveryCost, deliveryPromo, promoCode, promoDiscount, subtotal } =
+    useAppSelector((state) => state.card);
+
   const [promoInputValue, setPromoInputValue] = useState('');
   const [isPromoCodeActive, setIsPromoCodeActive] = useState(false);
   const [isPaymentActive, setIsPaymentActive] = useState(false);

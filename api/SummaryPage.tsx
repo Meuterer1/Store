@@ -110,11 +110,9 @@ const SummaryPage = () => {
   const dispatch = useAppDispatch();
   const isMountedRef = useRef(false);
 
-  let sums = cardItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  let delivery = deliveryCost - deliveryPromo;
+  const sum = subtotal - deliveryCost + deliveryPromo;
+
+  const delivery = deliveryCost - deliveryPromo;
 
   useEffect(() => {
     if (!isMountedRef.current) {
@@ -133,7 +131,7 @@ const SummaryPage = () => {
             <ViewCart cardItems={showCardItems} showButtons={false} />
             <div className="single-row">
               <h4>Total: </h4>
-              <p>$ {sums.toFixed(2)}</p>
+              <p>$ {sum.toFixed(2)}</p>
             </div>
             <div className="single-row">
               <h4>Delivery: </h4>
