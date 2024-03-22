@@ -17,6 +17,7 @@ const NewArrivals = () => {
         <LazyLoadImage
           src="./assets/woman_in_white_shirt.png"
           alt="woman in white shirt"
+          threshold={300}
         />
       </div>
       <div
@@ -26,13 +27,18 @@ const NewArrivals = () => {
         <LazyLoadImage
           src="./assets/leather_acket.png"
           alt="woman in leather jacket"
+          threshold={300}
         />
       </div>
       <div
         className="item"
         onClick={() => navigate(`/products/singleProduct/1`)}
       >
-        <LazyLoadImage src="./assets/backpack.png" alt="men with backpack" />
+        <LazyLoadImage
+          src="./assets/backpack.png"
+          alt="men with backpack"
+          threshold={300}
+        />
       </div>
     </NewArrivalsSection>
   );
