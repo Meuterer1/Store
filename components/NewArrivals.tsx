@@ -17,7 +17,7 @@ const NewArrivals = () => {
         <LazyLoadImage
           src="./assets/woman_in_white_shirt.png"
           alt="woman in white shirt"
-          threshold={300}
+          visibleByDefault
         />
       </div>
       <div
@@ -27,7 +27,7 @@ const NewArrivals = () => {
         <LazyLoadImage
           src="./assets/leather_acket.png"
           alt="woman in leather jacket"
-          threshold={300}
+          visibleByDefault
         />
       </div>
       <div
@@ -37,7 +37,7 @@ const NewArrivals = () => {
         <LazyLoadImage
           src="./assets/backpack.png"
           alt="men with backpack"
-          threshold={300}
+          visibleByDefault
         />
       </div>
     </NewArrivalsSection>
